@@ -39,19 +39,18 @@ class Product
     private Collection $categories;
 
     /**
-     * @var Collection<int, Order>
+     * @var Collection<int, OrderItem>
      */
-    #[ORM\ManyToMany(targetEntity: Order::class)]
-    private Collection $orders;
+    #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'product', orphanRemoval: true)]
+    private Collection $order_items;
 
-    #[ORM\OneToOne(mappedBy: 'product', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'product')]
     private ?Image $image = null;
 
     public function __construct()
     {
-        $this->orderItems = new ArrayCollection();
         $this->categories = new ArrayCollection();
-        $this->orders = new ArrayCollection();
+        $this->order_items = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,9 +118,9 @@ class Product
         return $this;
     }
 
-     /**
-     * @return Collection<int, Category>
-     */
+    /**
+    * @return Collection<int, Category>
+    */
     public function getCategories(): Collection
     {
         return $this->categories;
@@ -144,25 +143,31 @@ class Product
     }
 
     /**
-     * @return Collection<int, Order>
+     * @return Collection<int, OrderItem>
      */
-    public function getOrders(): Collection
+    public function getOrderItems(): Collection
     {
-        return $this->orders;
+        return $this->order_items;
     }
 
-    public function addOrder(Order $order): static
+    public function addOrderItem(OrderItem $orderItem): static
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
+        if (!$this->order_items->contains($orderItem)) {
+            $this->order_items->add($orderItem);
+            $orderItem->setProduct($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Order $order): static
+    public function removeOrderItem(OrderItem $orderItem): static
     {
-        $this->orders->removeElement($order);
+        if ($this->order_items->removeElement($orderItem)) {
+            // set the owning side to null (unless already changed)
+            if ($orderItem->getProduct() === $this) {
+                $orderItem->setProduct(null);
+            }
+        }
 
         return $this;
     }

@@ -28,7 +28,6 @@ class Order
     private ?OrderStatus $status = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     /**

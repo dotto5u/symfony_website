@@ -16,7 +16,7 @@ class Image
     #[ORM\Column(length: 255)]
     private ?string $url = null;
 
-    #[ORM\OneToOne(inversedBy: 'image', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'image')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Product $product = null;
 

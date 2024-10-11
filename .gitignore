@@ -26,3 +26,7 @@
 
 ### .idx
 /.idx/.data
+
+### php-cs-fixer
+/tools/php-cs-fixer/vendor
+.php-cs-fixer.cache
