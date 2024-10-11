@@ -19,16 +19,6 @@ Attention : Il vous faut PHP 8.2 pour faire fonctionner ce projet si vous avez P
     - Installer les extensions (whatwedo.twig, TheNouillet.symfony-vscode, DEVSENSE.phptools-vscode, 
     bmewburn.vscode-intelephense-client, zobo.php-intellisense)
 
-## Installation avec IDX
-
-1. Fork le projet sur votre compte GitHub
-2. Importer le projet depuis votre GitHub sur IDX
-3. Le projet est déjà lancé il suffit d'aller dans l'onglet du terminal avec `start` puis cliquer sur le lien `localhost`
-4. Lancer la commande `composer i` pour installer les dépendances du projet.
-5. Pour accéder à la base de données `mysql -u root`
-6. Dans un fichier à la racine `.env.local` mettre cette variable d'environnement 
-`DATABASE_URL="mysql://root:@127.0.0.1:3306/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4"`
-
 ## Installation en local
 
 1. Cloner le projet
