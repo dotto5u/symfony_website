@@ -2,11 +2,11 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use App\Entity\Product;
 use App\Enum\ProductStatus;
+use App\Entity\Product;
 use App\Entity\Category;
 use App\Entity\OrderItems;
 use App\Entity\Image;
@@ -20,7 +20,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         $productsData = [
             [
                 'name' => 'Yamaha U1',
-                'price' => 9000,
+                'price' => 9000.00,
                 'description' => 'Un piano droit avec une sonorité exceptionnelle, parfait pour les musiciens de tous niveaux.',
                 'stock' => 5,
                 'status' => ProductStatus::Available,
@@ -30,7 +30,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Kawai K300',
-                'price' => 7500,
+                'price' => 7500.00,
                 'description' => 'Le K300 est un piano droit reconnu pour sa fiabilité et sa qualité sonore supérieure.',
                 'stock' => 3,
                 'status' => ProductStatus::PreOrder,
@@ -40,9 +40,9 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Steinway & Sons Model B',
-                'price' => 15000,
+                'price' => 15000.00,
                 'description' => 'Un piano à queue pour les professionnels, offrant un son riche et une qualité de fabrication inégalée.',
-                'stock' => 1,
+                'stock' => 4,
                 'status' => ProductStatus::Available,
                 'categories' => ['category_2', 'category_5'],
                 'orderItems' => ['order_item_4', 'order_item_5', 'order_item_6'],
@@ -50,7 +50,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Casio Privia PX-870',
-                'price' => 1100,
+                'price' => 1100.00,
                 'description' => 'Un piano numérique compact avec un toucher réaliste et une variété de sons.',
                 'stock' => 10,
                 'status' => ProductStatus::Available,
@@ -60,7 +60,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Roland HP704',
-                'price' => 2200,
+                'price' => 2200.00,
                 'description' => 'Un piano numérique avec un son riche et une mécanique de touches immersive.',
                 'stock' => 0,
                 'status' => ProductStatus::SoldOut,
@@ -70,7 +70,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Yamaha CLP-775',
-                'price' => 3000,
+                'price' => 3000.00,
                 'description' => 'Un piano numérique haut de gamme pour les pianistes exigeants.',
                 'stock' => 4,
                 'status' => ProductStatus::Available,
@@ -80,7 +80,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Fazioli F278',
-                'price' => 14000,
+                'price' => 14000.00,
                 'description' => 'Un piano à queue de concert réputé pour sa clarté et sa richesse sonore.',
                 'stock' => 2,
                 'status' => ProductStatus::PreOrder,
@@ -90,7 +90,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Korg Grandstage 88',
-                'price' => 2000,
+                'price' => 2000.00,
                 'description' => 'Un piano de scène avec une large gamme de sons et une excellente jouabilité.',
                 'stock' => 6,
                 'status' => ProductStatus::Available,
@@ -100,7 +100,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Blüthner Model 1',
-                'price' => 13000,
+                'price' => 13000.00,
                 'description' => 'Un piano à queue élégant offrant une qualité sonore exceptionnelle pour les concerts.',
                 'stock' => 0,
                 'status' => ProductStatus::SoldOut,
@@ -110,7 +110,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'name' => 'Soft & Wet',
-                'price' => 50000,
+                'price' => 50000.00,
                 'description' => 'L\'un des meilleurs piano sur le marché.',
                 'stock' => 1,
                 'status' => ProductStatus::Available,
@@ -118,7 +118,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'orderItems' => ['order_item_17'],
                 'image' => 'image_10'
             ],
-        ];                  
+        ];
 
         foreach ($productsData as $key => $productData)
         {

@@ -2,8 +2,8 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Image;
 use App\Entity\Product;
@@ -55,7 +55,7 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
                 'url' => 'soft_&_wet.jpg',
                 'product' => 'product_10'
             ],
-        ];                     
+        ]; 
 
         foreach ($imagesData as $key => $imageData)
         {
@@ -67,7 +67,7 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-    private createImage(array $data): Image
+    private function createImage(array $data): Image
     {   
         $image = new Image();
         $image->setName($data['name']);

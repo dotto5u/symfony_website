@@ -28,12 +28,14 @@ class Order
     private ?OrderStatus $status = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     /**
      * @var Collection<int, OrderItem>
      */
     #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'order_', orphanRemoval: true)]
+    #[ORM\JoinColumn(nullable: false)]
     private Collection $orderItems;
 
     public function __construct()

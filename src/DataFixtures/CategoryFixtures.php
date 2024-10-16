@@ -2,8 +2,8 @@
 
 namespace App\DataFixtures;
 
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Category;
 
@@ -29,7 +29,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
             [
                 'name' => 'Piano Haut de Gamme'
             ],
-        ];                     
+        ];
 
         foreach ($categoriesData as $key => $categoryData)
         {
@@ -41,7 +41,7 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-    private createCategory(array $data): Category
+    private function createCategory(array $data): Category
     {   
         $category = new Category();
         $category->setName($data['name']);
