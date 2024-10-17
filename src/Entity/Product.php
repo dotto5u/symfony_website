@@ -43,7 +43,7 @@ class Product
      * @var Collection<int, OrderItem>
      */
     #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'product', orphanRemoval: true)]
-    private Collection $order_items;
+    private Collection $orderItems;
 
     #[ORM\OneToOne(mappedBy: 'product')]
     private ?Image $image = null;
@@ -51,7 +51,7 @@ class Product
     public function __construct()
     {
         $this->categories = new ArrayCollection();
-        $this->order_items = new ArrayCollection();
+        $this->orderItems = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -148,13 +148,13 @@ class Product
      */
     public function getOrderItems(): Collection
     {
-        return $this->order_items;
+        return $this->orderItems;
     }
 
     public function addOrderItem(OrderItem $orderItem): static
     {
-        if (!$this->order_items->contains($orderItem)) {
-            $this->order_items->add($orderItem);
+        if (!$this->orderItems->contains($orderItem)) {
+            $this->orderItems->add($orderItem);
             $orderItem->setProduct($this);
         }
 
@@ -163,7 +163,7 @@ class Product
 
     public function removeOrderItem(OrderItem $orderItem): static
     {
-        if ($this->order_items->removeElement($orderItem)) {
+        if ($this->orderItems->removeElement($orderItem)) {
             // set the owning side to null (unless already changed)
             if ($orderItem->getProduct() === $this) {
                 $orderItem->setProduct(null);

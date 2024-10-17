@@ -6,7 +6,7 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Image;
-use App\Entity\Product;
+use App\DataFixtures\ProductFixtures;
 
 class ImageFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -17,43 +17,43 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
         $imagesData = [
             [
                 'url' => 'yamaha-u1.jpg',
-                'product' => 'product_1'
+                'product_ref' => 'product_1'
             ],
             [
                 'url' => 'kawai-k300.jpg',
-                'product' => 'product_2'
+                'product_ref' => 'product_2'
             ],
             [
                 'url' => 'steinway_sons_B.jpg',
-                'product' => 'product_3'
+                'product_ref' => 'product_3'
             ],
             [
                 'url' => 'casio-privia-px870B.jpg',
-                'product' => 'product_4'
+                'product_ref' => 'product_4'
             ],
             [
                 'url' => 'roland_hp_704.jpg',
-                'product' => 'product_5'
+                'product_ref' => 'product_5'
             ],
             [
                 'url' => 'yamaha-clp-775.jpg',
-                'product' => 'product_6'
+                'product_ref' => 'product_6'
             ],
             [
                 'url' => 'f278.jpg',
-                'product' => 'product_7'
+                'product_ref' => 'product_7'
             ],
             [
                 'url' => 'korg_grandstage_88.jpg',
-                'product' => 'product_8'
+                'product_ref' => 'product_8'
             ],
             [
                 'url' => 'bluthner_model_1.jpg',
-                'product' => 'product_9'
+                'product_ref' => 'product_9'
             ],
             [
                 'url' => 'soft_&_wet.jpg',
-                'product' => 'product_10'
+                'product_ref' => 'product_10'
             ],
         ]; 
 
@@ -70,8 +70,8 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
     private function createImage(array $data): Image
     {   
         $image = new Image();
-        $image->setName($data['name']);
-        $image->setProduct($data['product']);
+        $image->setUrl($data['url']);
+        $image->setProduct($this->getReference($data['product_ref']));
 
         return $image;
     }
@@ -79,7 +79,7 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            
+            ProductFixtures::class
         ];
     }
 }

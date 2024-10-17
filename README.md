@@ -1,6 +1,6 @@
-# Symfony 7.1 Boilerplate 
+# Cours Symfony
 
-
+https://symfony-course.vercel.app/
 
 ## PHP CS-Fixer Tool
 

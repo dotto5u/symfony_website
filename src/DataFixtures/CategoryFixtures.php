@@ -4,12 +4,11 @@ namespace App\DataFixtures;
 
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Category;
 
-class CategoryFixtures extends Fixture implements DependentFixtureInterface
+class CategoryFixtures extends Fixture
 {
-    private const CATEGORY_REF_PREFIX = 'product_';
+    private const CATEGORY_REF_PREFIX = 'category_';
 
     public function load(ObjectManager $manager): void
     {
@@ -47,12 +46,5 @@ class CategoryFixtures extends Fixture implements DependentFixtureInterface
         $category->setName($data['name']);
 
         return $category;
-    }
-
-    public function getDependencies()
-    {
-        return [
-            
-        ];
     }
 }
