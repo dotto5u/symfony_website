@@ -9,7 +9,7 @@ use App\Entity\Address;
 use App\DataFixtures\UserFixtures;
 
 class AddressFixtures extends Fixture implements DependentFixtureInterface
-{   
+{
     private const ADDRESS_REF_PREFIX = 'address_';
 
     public function load(ObjectManager $manager): void
@@ -52,8 +52,7 @@ class AddressFixtures extends Fixture implements DependentFixtureInterface
            ],
         ];
 
-        foreach ($addressesData as $key => $addressData)
-        {
+        foreach ($addressesData as $key => $addressData) {
             $address = $this->createAddress($addressData);
             $manager->persist($address);
             $this->addReference(self::ADDRESS_REF_PREFIX.($key + 1), $address);
@@ -62,7 +61,7 @@ class AddressFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-    private function createAddress(array $data): Address 
+    private function createAddress(array $data): Address
     {
         $address = new Address();
         $address->setStreet($data['street']);
@@ -70,7 +69,7 @@ class AddressFixtures extends Fixture implements DependentFixtureInterface
         $address->setCity($data['city']);
         $address->setCountry($data['country']);
         $address->setUser($this->getReference($data['user_ref']));
-        
+
         return $address;
     }
 

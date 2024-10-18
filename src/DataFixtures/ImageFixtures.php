@@ -55,10 +55,9 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
                 'url' => 'soft_&_wet.jpg',
                 'product_ref' => 'product_10'
             ],
-        ]; 
+        ];
 
-        foreach ($imagesData as $key => $imageData)
-        {
+        foreach ($imagesData as $key => $imageData) {
             $image = $this->createImage($imageData);
             $manager->persist($image);
             $this->addReference(self::IMAGE_REF_PREFIX.($key + 1), $image);
@@ -68,7 +67,7 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
     }
 
     private function createImage(array $data): Image
-    {   
+    {
         $image = new Image();
         $image->setUrl($data['url']);
         $image->setProduct($this->getReference($data['product_ref']));

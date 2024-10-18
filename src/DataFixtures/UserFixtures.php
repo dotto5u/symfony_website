@@ -7,7 +7,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use App\Entity\User;
 
 class UserFixtures extends Fixture
-{   
+{
     private const USER_REF_PREFIX = 'user_';
 
     public function load(ObjectManager $manager): void
@@ -18,50 +18,39 @@ class UserFixtures extends Fixture
                 'first_name' => 'DUCRET',
                 'last_name' => 'Thomas',
                 'roles' => ['ROLE_USER'],
-                'password' => 'ducret123',
-                'orders_ref' => ['order_1', 'order_2', 'order_8'],
-                'addresses_ref' => ['address_1', 'address_2']
+                'password' => 'ducret123'
             ],
             [
                 'email' => 'maaroufi.julien@yahoo.com',
                 'first_name' => 'MAAROUFI',
                 'last_name' => 'Julien',
                 'roles' => ['ROLE_USER'],
-                'password' => 'maaroufi123',
-                'orders_ref' => ['order_3', 'order_9'],
-                'addresses_ref' => ['address_3']
+                'password' => 'maaroufi123'
             ],
             [
                 'email' => 'manick.luc@gmail.com',
                 'first_name' => 'MANICK',
                 'last_name' => 'Luc',
                 'roles' => ['ROLE_USER'],
-                'password' => 'manick123',
-                'orders_ref' => ['order_4', 'order_5', 'order_10'],
-                'addresses_ref' => ['address_4']
+                'password' => 'manick123'
             ],
             [
                 'email' => 'dotto.matis@gmail.com',
                 'first_name' => 'DOTTO',
                 'last_name' => 'Matis',
                 'roles' => ['ROLE_USER'],
-                'password' => 'dotto123',
-                'orders_ref' => ['order_6', 'order_7', 'order_11'],
-                'addresses_ref' => ['address_5']
+                'password' => 'dotto123'
             ],
             [
                 'email' => 'admin@gmail.com',
                 'first_name' => 'admin',
                 'last_name' => 'admin',
                 'roles' => ['ROLE_ADMIN'],
-                'password' => 'admin123',
-                'orders_ref' => [],
-                'addresses_ref' => []
+                'password' => 'admin123'
             ]
         ];
 
-        foreach ($usersData as $key => $userData)
-        {
+        foreach ($usersData as $key => $userData) {
             $user = $this->createUser($userData);
             $manager->persist($user);
             $this->addReference(self::USER_REF_PREFIX.($key + 1), $user);
@@ -70,7 +59,7 @@ class UserFixtures extends Fixture
         $manager->flush();
     }
 
-    private function createUser(array $data): User 
+    private function createUser(array $data): User
     {
         $user = new User();
         $user->setEmail($data['email']);
@@ -78,14 +67,6 @@ class UserFixtures extends Fixture
         $user->setLastName($data['last_name']);
         $user->setRoles($data['roles']);
         $user->setPassword($data['password']);
-
-        foreach ($data['orders_ref'] as $orderRef) {
-            $user->addOrder($this->getReference($orderRef));
-        }
-
-        foreach ($data['addresses_ref'] as $addressRef) {
-            $user->addAddress($this->getReference($addressRef));
-        }
 
         return $user;
     }

@@ -30,8 +30,7 @@ class CategoryFixtures extends Fixture
             ],
         ];
 
-        foreach ($categoriesData as $key => $categoryData)
-        {
+        foreach ($categoriesData as $key => $categoryData) {
             $category = $this->createCategory($categoryData);
             $manager->persist($category);
             $this->addReference(self::CATEGORY_REF_PREFIX.($key + 1), $category);
@@ -41,7 +40,7 @@ class CategoryFixtures extends Fixture
     }
 
     private function createCategory(array $data): Category
-    {   
+    {
         $category = new Category();
         $category->setName($data['name']);
 

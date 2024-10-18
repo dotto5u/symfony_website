@@ -118,10 +118,9 @@ class OrderItemFixtures extends Fixture implements DependentFixtureInterface
                 'order_ref' => 'order_11',
                 'product_ref' => 'product_10'
             ]
-        ];                         
+        ];
 
-        foreach ($orderItemsData as $key => $orderItemData)
-        {
+        foreach ($orderItemsData as $key => $orderItemData) {
             $orderItem = $this->createOrderItem($orderItemData);
             $manager->persist($orderItem);
             $this->addReference(self::ORDER_ITEM_REF_PREFIX.($key + 1), $orderItem);
@@ -131,7 +130,7 @@ class OrderItemFixtures extends Fixture implements DependentFixtureInterface
     }
 
     private function createOrderItem(array $data): OrderItem
-    {   
+    {
         $orderItem = new OrderItem();
         $orderItem->setQuantity($data['quantity']);
         $orderItem->setProductPrice($data['product_price']);
