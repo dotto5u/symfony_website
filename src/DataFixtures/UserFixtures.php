@@ -45,15 +45,8 @@ class UserFixtures extends Fixture
                 'email' => 'dotto.matis@gmail.com',
                 'first_name' => 'DOTTO',
                 'last_name' => 'Matis',
-                'roles' => ['ROLE_USER'],
-                'password' => 'dotto123'
-            ],
-            [
-                'email' => 'admin@gmail.com',
-                'first_name' => 'admin',
-                'last_name' => 'admin',
                 'roles' => ['ROLE_ADMIN'],
-                'password' => 'admin123'
+                'password' => 'dotto123'
             ]
         ];
 
