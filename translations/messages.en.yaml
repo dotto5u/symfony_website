@@ -1,0 +1,15 @@
+# login messages
+login:
+    email:
+        label: 'Email'
+        placeholder: 'Enter your email'
+    password:
+        label: 'Password'
+        placeholder: 'Enter your password'
+    submit:
+        label: 'Login'
+
+# authentication messages
+Invalid credentials.: Incorrect email or password.
+User account is disabled.: The user account is disabled.
+User account is locked.: The user account is locked.
