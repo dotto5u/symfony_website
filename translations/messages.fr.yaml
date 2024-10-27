@@ -1,3 +1,14 @@
+# authentication messages
+Invalid credentials.: Email ou mot de passe incorrect.
+User account is disabled.: Le compte utilisateur est désactivé.
+User account is locked.: Le compte utilisateur est verrouillé.
+
+# access denied messages
+access_denied:
+    default: Accès refusé.
+    login: Vous êtes déjà connecté.
+    admin: Vous n\'avez pas l\'autorisation d\'accéder à cette page.
+
 # login messages
 login:
     email:
@@ -8,8 +19,3 @@ login:
         placeholder: 'Entrez votre mot de passe'
     submit:
         label: 'Se connecter'
-
-# authentication messages
-Invalid credentials.: Email ou mot de passe incorrect.
-User account is disabled.: Le compte utilisateur est désactivé.
-User account is locked.: Le compte utilisateur est verrouillé.

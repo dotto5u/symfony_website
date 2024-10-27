@@ -1,3 +1,14 @@
+# authentication messages
+Invalid credentials.: Incorrect email or password.
+User account is disabled.: The user account is disabled.
+User account is locked.: The user account is locked.
+
+# access denied messages
+access_denied:
+    default: Access denied.
+    login: You are already logged in.
+    admin: You are not authorized to access this page.
+
 # login messages
 login:
     email:
@@ -8,8 +19,3 @@ login:
         placeholder: 'Enter your password'
     submit:
         label: 'Login'
-
-# authentication messages
-Invalid credentials.: Incorrect email or password.
-User account is disabled.: The user account is disabled.
-User account is locked.: The user account is locked.
