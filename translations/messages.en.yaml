@@ -19,3 +19,12 @@ login:
         placeholder: 'Enter your password'
     submit:
         label: 'Login'
+
+# navbar messages
+nav:
+    home: 'Home'
+    products: 'Products'
+    dashboard: 'Dashboard'
+    cart: 'Cart'
+    sign_in: 'Sign in'
+    sign_out: 'Sign out'

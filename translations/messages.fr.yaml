@@ -19,3 +19,12 @@ login:
         placeholder: 'Entrez votre mot de passe'
     submit:
         label: 'Se connecter'
+
+# navbar messages
+nav:
+    home: 'Accueil'
+    products: 'Produits'
+    dashboard: 'Tableau de bord'
+    cart: 'Panier'
+    sign_in: 'Connexion'
+    sign_out: 'Déconnexion'

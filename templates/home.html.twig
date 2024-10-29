@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block header %}{% endblock %}
+{% block header %}
+    {% include 'partials/_navbar.html.twig' %}
+{% endblock %}
 
-{% block body %}
+{% block content %}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
             <div class="{{ label }}">
@@ -11,5 +13,7 @@
         {% endfor %}
     {% endfor %}
 
-    <p>Home page<p>
+    <content>
+        <p class="text-white">Home page !<p>
+    </content>
 {% endblock %}

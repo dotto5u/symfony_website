@@ -9,12 +9,12 @@
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
-        <link rel="shortcut icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('icons/favicon.png') }}">
     </head>
 
-    <body>
+    <body class="font-fcp bg-fcp-dark-blue">
         {% block header %}{% endblock %}
-        {% block body %}{% endblock %}
+        {% block content %}{% endblock %}
         {% block footer %}{% endblock %}
     </body>
 </html>
