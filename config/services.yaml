@@ -27,3 +27,7 @@ services:
     App\Security\LoginSuccessHandler:
         arguments:
             $router: '@router'
+    
+    App\Service\PaginationService:
+        arguments:
+            $paginator: '@knp_paginator'

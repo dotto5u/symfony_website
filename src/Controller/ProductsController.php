@@ -6,12 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class PianoController extends AbstractController
+class ProductsController extends AbstractController
 {
-    #[Route('/piano', name: 'app_piano')]
+    #[Route('/products', name: 'app_products')]
     public function index(): Response
     {
-        return $this->render('piano/index.html.twig', [
+        return $this->render('products.html.twig', [
             
         ]);
     }

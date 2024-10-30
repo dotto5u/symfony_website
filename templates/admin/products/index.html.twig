@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {% include 'partials/_navbar.html.twig' %}
+{% endblock %}
+{% block content %}
+    <main class="mx-20 my-12 flex flex-col gap-10">
+        <h1>Liste des produits</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in pagination %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }} €</td>
+                        <td>{{ product.stock }}</td>
+                        <td>{{ product.status.value }}</td>
+                        <td>
+                            <a href="" class="">Modifier</a>
+                            <a href="" class="">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun produit trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </main>
+{% endblock %}

@@ -1,5 +1,44 @@
 {% extends 'base.html.twig' %}
-{% block header %}{% endblock %}
+{% block header %}
+    {% include 'partials/_navbar.html.twig' %}
+{% endblock %}
 {% block content %}
-    <p>Dashboard page<p>
+    <main class="mx-20 my-12 flex flex-col gap-10">
+        <h1 class="text-center text-2xl text-white font-bold md:text-left">Tableau de Bord</h1>
+
+        <div class="grid justify-items-center gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div class="p-6 border rounded-lg shadow-lg border-fcp-gray w-full bg-white">
+                <h3 class="text-center text-xl text-fcp-orange font-bold">Produits</h3>
+                <p class="mt-3 text-center text-2xl text-fcp-blue">{{ 0 }}</p>
+
+                <div class="flex justify-center mt-5">
+                    <a href="{{ path('app_admin_products') }}" class="px-4 py-2 bg-fcp-orange hover:bg-orange-500 text-white rounded-md">
+                        Voir les produits
+                    </a>
+                </div>
+            </div>
+
+            <div class="p-6 border rounded-lg shadow-lg border-fcp-gray w-full bg-white">
+                <h3 class="text-center text-xl text-fcp-orange font-bold">Commandes</h3>
+                <p class="mt-3 text-center text-2xl text-fcp-blue">{{ 0 }}</p>
+
+                <div class="flex justify-center mt-5">
+                    <button  href="{{ path('app_home') }}" class="px-4 py-2 bg-fcp-orange text-white rounded-md">
+                        Voir les commandes
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-6 border rounded-lg shadow-lg border-fcp-gray w-full bg-white">
+                <h3 class="text-center text-xl text-fcp-orange font-bold">Utilisateurs</h3>
+                <p class="mt-3 text-center text-2xl text-fcp-blue">{{ 0 }}</p>
+
+                <div class="flex justify-center mt-5">
+                    <button  href="{{ path('app_home') }}" class="px-4 py-2 bg-fcp-orange text-white rounded-md">
+                        Voir les utilisateurs
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
 {% endblock %}
