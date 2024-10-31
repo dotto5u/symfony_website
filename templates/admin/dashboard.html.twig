@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
+
 {% block header %}
     {% include 'partials/_navbar.html.twig' %}
 {% endblock %}
-{% block content %}
-    <main class="mx-20 my-12 flex flex-col gap-10">
+
+{% block main %}
+    <div class="flex flex-col gap-10">
         <h1 class="text-center text-2xl text-white font-bold md:text-left">Tableau de Bord</h1>
 
         <div class="grid justify-items-center gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -40,5 +42,5 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 {% endblock %}

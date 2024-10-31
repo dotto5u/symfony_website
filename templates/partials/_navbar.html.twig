@@ -1,34 +1,48 @@
-<nav data-controller="nav" class="h-20 px-8 py-6 bg-fcp-gray flex items-center justify-between">
-  <div class="text-lg text-fcp-dark-blue font-bold">
+{% set navLinks = [
+    { 'path': 'app_home', 'label': 'nav.home', 'role': 'PUBLIC_ACCESS' },
+    { 'path': 'app_products', 'label': 'nav.products', 'role': 'PUBLIC_ACCESS' },
+    { 'path': 'app_admin_dashboard', 'label': 'nav.dashboard', 'role': 'ROLE_ADMIN' },
+    { 'path': 'app_cart', 'label': 'nav.cart', 'role': 'PUBLIC_ACCESS' },
+  ]
+%}
+
+<nav data-controller="nav" class="relative z-20 h-20 px-8 py-6 flex items-center justify-between shadow-lg bg-fcp-dark-blue">
+  <div class="z-20 text-lg text-fcp-white font-bold">
     Forecast Piano
   </div>
 
-  <div data-nav-target="navLinks" class="absolute translate-y-[-125%] w-full min-h-[30%] left-0 top-12 flex items-center bg-fcp-gray md:relative md:translate-y-0 md:duration-0 md:w-auto md:min-h-0 md:top-0">
-    <ul class="flex flex-col px-10 gap-3 bg-fcp-gray md:flex-row md:items-center md:gap-12">
-      <li>
-        <a class="text-lg text-fcp-dark-blue hover:font-semibold">{{ 'nav.home' | trans }}</a>
-      </li>
-      <li>
-        <a class="text-lg text-fcp-dark-blue hover:font-semibold">{{ 'nav.products' | trans }}</a>
-      </li>
-      <li>
-        <a class="text-lg text-fcp-dark-blue hover:font-semibold">{{ 'nav.dashboard' | trans }}</a>
-      </li>
-      <li>
-        <a class="text-lg text-fcp-dark-blue hover:font-semibold">{{ 'nav.cart' | trans }}</a>
-      </li>
-      <li>
-        <a class="text-lg text-fcp-dark-blue hover:font-semibold">{{ 'nav.sign_in' | trans }}</a>
+  <div 
+    data-nav-target="navLinks" class="absolute z-10 w-full pt-10 pb-14 left-0 top-12 flex items-center 
+    bg-fcp-dark-blue shadow-lg translate-y-[-125%] duration-0 ease-out 
+    lg:relative lg:z-20 lg:w-auto lg:py-0 lg:top-0 lg:shadow-none lg:translate-y-[0] lg:duration-0"
+  >
+    <ul class="flex flex-col items-center px-8 gap-3 bg-fcp-dark-blue lg:flex-row lg:items-center lg:gap-12">
+      {% for link in navLinks %}
+        {% if is_granted(link.role) %}
+          <li>
+            <a href="{{ path(link.path) }}" class="text-lg text-fcp-white hover:font-semibold transition duration-200">
+              {{ link.label | trans }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      <li class="mt-3 lg:mt-0">
+          <a 
+            href="{{ app.user ? path('app_logout') : path('app_login') }}"
+            class="px-7 py-3 rounded-full text-lg text-fcp-white hover:font-semibold bg-fcp-cyan"
+          >
+            {{ app.user ? 'nav.sign_out' | trans : 'nav.sign_in' | trans }}
+          </a>
       </li>
     </ul>
   </div>
 
-  <div data-action="click->nav#toggle" class="md:hidden">
-    <span data-nav-target="menuIcon">
-      {{ ux_icon('ion:menu', { class: 'w-7 h-7' }) }}
+  <div data-action="click->nav#toggle" class="z-20 lg:hidden">
+    <span data-nav-target="navMenuIcon">
+      {{ ux_icon('ion:menu', { class: 'w-7 h-7 text-fcp-white' }) }}
     </span>
-     <span data-nav-target="closeIcon" class="hidden">
-      {{ ux_icon('ion:close', { class: 'w-7 h-7' }) }}
+    <span data-nav-target="navCloseIcon" class="hidden">
+      {{ ux_icon('ion:close', { class: 'w-7 h-7 text-fcp-white' }) }}
     </span>
   </div>
 </nav>

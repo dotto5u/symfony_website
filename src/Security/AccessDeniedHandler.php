@@ -27,7 +27,7 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface
 
         if ($flashBag) {
             if ($route === '/login') {
-                $flashBag->add('info', 'access_denied.login');
+                $flashBag->add('information', 'access_denied.login');
                 return new RedirectResponse($this->router->generate('app_home'));
             }
 

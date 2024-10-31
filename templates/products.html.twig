@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
-{% block header %}{% endblock %}
-{% block content %}
-    <p>Products page<p>
+
+{% block header %}
+     {% include 'partials/_navbar.html.twig' %}
+{% endblock %}
+
+{% block main %}
+     <h1 class="text-fcp-white text-2xl">Products page !</h1>
 {% endblock %}
