@@ -11,6 +11,7 @@ access_denied:
 
 # login messages
 login:
+    title: 'Login to your account'
     email:
         label: 'Email'
         placeholder: 'Enter your email'

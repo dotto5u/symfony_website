@@ -12,14 +12,13 @@
         <link rel="shortcut icon" type="image/png" href="{{ asset('icons/favicon.png') }}">
     </head>
 
-    <body class="font-fcp bg-fcp-blue">
+    <body class="font-fcp bg-fcp-blue-light">
         <header>
             {% block header %}{% endblock %}
         </header>
 
-        <main class="mx-36 my-20">
-            {% block main %}{% endblock %}
-        </main>
+        
+        {% block main %}{% endblock %}
 
         <footer class="relative">
             {% block footer %}{% endblock %}

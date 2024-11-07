@@ -18,12 +18,14 @@ class LoginFormType extends AbstractType
                 'label' => 'login.email.label',
                 'attr' => [
                     'placeholder' => 'login.email.placeholder',
+                    'autocomplete' => 'email',
                 ],
             ])
             ->add('password', PasswordType::class, [
                 'label' => 'login.password.label',
                 'attr' => [
                     'placeholder' => 'login.password.placeholder',
+                    'autocomplete' => 'current-password',
                 ],
             ])
             ->add('submit', SubmitType::class, [

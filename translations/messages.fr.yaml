@@ -11,6 +11,7 @@ access_denied:
 
 # login messages
 login:
+    title: 'Connectez-vous à votre compte'
     email:
         label: 'Email'
         placeholder: 'Entrez votre email'
