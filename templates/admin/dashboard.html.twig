@@ -6,43 +6,80 @@
 
 {% block main %}
     <main class="mx-36 my-20">
-        <div class="flex flex-col gap-10">
-            <h1 class="text-center text-2xl text-white font-bold md:text-left">Tableau de Bord</h1>
+        <div class="flex flex-wrap justify-center gap-4 mb-8 sm:justify-start">
+            <span><a href="{{ path('app_home') }}" class="px-4 py-2 fcp-button">{{ 'label.users' | trans }}</a></span>
+            <span><a href="{{ path('app_home') }}" class="px-4 py-2 fcp-button">{{ 'label.orders' | trans }}</a></span>
+            <span><a href="{{ path('app_admin_products') }}" class="px-4 py-2 fcp-button">{{ 'label.products' | trans }}</a></span>
+        </div>
 
-            <div class="grid justify-items-center gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                <div class="p-6 border rounded-lg shadow-lg border-fcp-gray w-full bg-white">
-                    <h3 class="text-center text-xl text-fcp-orange font-bold">Produits</h3>
-                    <p class="mt-3 text-center text-2xl text-fcp-blue-light">{{ 0 }}</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            {% set productsHeader = ['table.header.name', 'table.header.total'] %}
 
-                    <div class="flex justify-center mt-5">
-                        <a href="{{ path('app_admin_products') }}" class="px-4 py-2 bg-fcp-orange hover:bg-orange-500 text-white rounded-md">
-                            Voir les produits
-                        </a>
-                    </div>
-                </div>
+            <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+                <h2 class="text-lg text-fcp-white hidden sm:block">{{ 'title.product_per_category' | trans }}</h2>
 
-                <div class="p-6 border rounded-lg shadow-lg border-fcp-gray w-full bg-white">
-                    <h3 class="text-center text-xl text-fcp-orange font-bold">Commandes</h3>
-                    <p class="mt-3 text-center text-2xl text-fcp-blue-light">{{ 0 }}</p>
-
-                    <div class="flex justify-center mt-5">
-                        <button  href="{{ path('app_home') }}" class="px-4 py-2 bg-fcp-orange text-white rounded-md">
-                            Voir les commandes
-                        </button>
-                    </div>
-                </div>
-
-                <div class="p-6 border rounded-lg shadow-lg border-fcp-gray w-full bg-white">
-                    <h3 class="text-center text-xl text-fcp-orange font-bold">Utilisateurs</h3>
-                    <p class="mt-3 text-center text-2xl text-fcp-blue-light">{{ 0 }}</p>
-
-                    <div class="flex justify-center mt-5">
-                        <button  href="{{ path('app_home') }}" class="px-4 py-2 bg-fcp-orange text-white rounded-md">
-                            Voir les utilisateurs
-                        </button>
-                    </div>
+                <div class="overflow-x-auto overflow-hidden p-1.5">
+                    <table class="min-w-full divide-y divide-neutral-700">
+                        <thead>
+                            <tr>
+                                {% for column in productsHeader %}
+                                    <th class="px-6 py-3 text-xs font-medium text-start text-neutral-500 uppercase">{{ column | trans }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-neutral-700">
+                            {% for data in productCount %}
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-200">
+                                        {{ data.categoryName }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-fcp-white">
+                                        {{ data.productCount }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+            {% set orderHeader = ['table.header.reference', 'table.header.created_at', 'table.header.order_by', 'table.header.status'] %}
+
+            <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+                <h2 class="text-lg text-fcp-white hidden sm:block">{{ 'title.last_5_orders' | trans }}</h2>
+
+                <div class="overflow-x-auto overflow-hidden p-1.5">
+                    <table class="min-w-full divide-y divide-neutral-700">
+                        <thead>
+                            <tr>
+                                {% for column in orderHeader %}
+                                    <th class="px-6 py-3 text-xs font-medium text-start text-neutral-500 uppercase">{{ column | trans }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-neutral-700">
+                            {% for order in orders %}
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-200">
+                                        {{ order.reference }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-fcp-white">
+                                        {{ order.createdAt | date('d/m/Y') }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-fcp-white">
+                                        {{ order.user.fullName }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-fcp-white">
+                                        {{ ('label.' ~ order.status.value) | trans }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
         </div>
     </main>
 {% endblock %}

@@ -1,15 +1,43 @@
-# authentication messages
-Invalid credentials.: Incorrect email or password.
-User account is disabled.: The user account is disabled.
-User account is locked.: The user account is locked.
+# authentication
+Invalid credentials.: Incorrect email or password
+User account is disabled.: The user account is disabled
+User account is locked.: The user account is locked
 
-# access denied messages
+# access denied
 access_denied:
-    default: Access denied.
-    login: You are already logged in.
-    admin: You are not authorized to access this page.
+    default: Access denied
+    login: You are already logged in
+    admin: You are not authorized to access this page
 
-# login messages
+# title
+title:
+    product_per_category: Number of products per category
+    last_5_orders: The last 5 orders
+
+# labels
+label:
+    users: Users
+    orders: Orders
+    products: Products
+
+    in_preparation: In preparation
+    shipped: Shipped
+    delivered: Delivered
+    canceled: Canceled
+
+    
+
+# table
+table:
+    header:
+        name: Name
+        total: Total
+        reference: Reference
+        created_at: Date
+        order_by: By
+        status: Status
+
+# login
 login:
     title: 'Login to your account'
     email:
@@ -21,7 +49,7 @@ login:
     submit:
         label: 'Login'
 
-# navbar messages
+# navbar
 nav:
     home: 'Home'
     products: 'Products'

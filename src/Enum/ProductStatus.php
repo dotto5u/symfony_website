@@ -4,7 +4,7 @@ namespace App\Enum;
 
 enum ProductStatus: string
 {
-    case Available = 'AVAILABLE';
-    case SoldOut = 'SOLD_OUT';
-    case PreOrder = 'PRE_ORDER';
+    case Available = 'available';
+    case SoldOut = 'sold_out';
+    case PreOrder = 'pre_order';
 }

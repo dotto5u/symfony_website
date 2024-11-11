@@ -7,12 +7,12 @@
 {% block main %}
     <main class="relative my-20 flex flex-col items-center">
         {% if error %}
-            <div class="absolute w-96 top-0 p-5 bg-red-400 rounded-md text-center text-fcp-blue-dark animate-fade-in">
+            <div class="absolute w-80 top-0 p-5 bg-red-400 rounded-md text-center text-fcp-blue-dark animate-fade-in 2sm:w-96">
                 {{ error.messageKey | trans(error.messageData, 'messages') }}
             </div>
         {% endif %}
 
-        <div class="w-96 mt-20 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+        <div class="w-80 mt-20 p-8 rounded-md shadow-lg bg-fcp-blue-dark 2sm:w-96">
             <h2 class="mb-4 text-center text-lg text-fcp-white font-semibold">{{ 'login.title' | trans }}</h2>
 
             {{ form_start(form) }}

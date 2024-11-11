@@ -5,6 +5,9 @@ export const content = [
 ];
 export const theme = {
   extend: {
+    screens: {
+      '2sm': '396px',
+    },
     fontFamily: {
       'fcp': ['Roboto', 'sans']
     },
@@ -67,7 +70,7 @@ export const plugins = [
         '@apply w-full p-2 border border-gray-700 rounded-md bg-fcp-blue-dark text-fcp-white focus:outline-none focus:border-cyan-600 focus:ring-2 transition duration-200': {},
       },
       '.fcp-button': {
-        '@apply w-full py-2 bg-cyan-600 rounded-md text-fcp-white font-semibold hover:bg-cyan-700 transition duration-300': {}
+        '@apply w-full inline-block py-2 bg-cyan-600 rounded-md text-center text-fcp-white font-semibold hover:bg-cyan-700 transition duration-300': {}
       },
     });
   },
