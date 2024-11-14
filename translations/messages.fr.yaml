@@ -11,18 +11,27 @@ access_denied:
 
 # title
 title:
-    product_per_category: Nombre de produits par catégorie
-    last_5_orders: Les 5 dernières commandes
+    dashboard:
+        welcome: Bienvenue, %name%
+        product_per_category: Nombre de produits par catégorie
+        last_5_orders: Les 5 dernières commandes
+        product_availability_ratio: Ratio de disponibilité des produits
+        sales_per_month_over_12_months: Montant des ventes par mois sur les 12 derniers mois
 
 # labels
 label:
     users: Utilisateurs
     orders: Commandes
     products: Produits
+
     in_preparation: En préparation
     shipped: Expédiée
     delivered: Livrée
     canceled: Annulée
+
+    available: Disponible
+    pre_order: En précommande
+    sold_out: En rupture
 
 # table
 table:

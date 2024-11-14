@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block main %}
-    <main class="mx-36 my-20">
+    <main class="mx-6 my-12 sm:mx-36 sm:my-20">
+        <h1 class="pb-10 text-center text-3xl text-fcp-white">{{ 'title.dashboard.welcome' | trans({ '%name%': app.user.lastName }) }}</h1>
+
         <div class="flex flex-wrap justify-center gap-4 mb-8 sm:justify-start">
             <span><a href="{{ path('app_home') }}" class="px-4 py-2 fcp-button">{{ 'label.users' | trans }}</a></span>
             <span><a href="{{ path('app_home') }}" class="px-4 py-2 fcp-button">{{ 'label.orders' | trans }}</a></span>
@@ -16,14 +18,22 @@
             {% set productsHeader = ['table.header.name', 'table.header.total'] %}
 
             <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
-                <h2 class="text-lg text-fcp-white hidden sm:block">{{ 'title.product_per_category' | trans }}</h2>
+                <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.product_per_category' | trans }}</h2>
 
                 <div class="overflow-x-auto overflow-hidden p-1.5">
                     <table class="min-w-full divide-y divide-neutral-700">
                         <thead>
                             <tr>
                                 {% for column in productsHeader %}
-                                    <th class="px-6 py-3 text-xs font-medium text-start text-neutral-500 uppercase">{{ column | trans }}</th>
+                                    <th class="px-6 py-3 text-xs font-medium 
+                                        {% if column == 'table.header.total' %} 
+                                            text-center 
+                                        {% else %}
+                                            text-start 
+                                        {% endif %}
+                                        text-neutral-500 uppercase">
+                                        {{ column | trans }}
+                                    </th>
                                 {% endfor %}
                             </tr>
                         </thead>
@@ -33,7 +43,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-200">
                                         {{ data.categoryName }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-fcp-white">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium text-fcp-white">
                                         {{ data.productCount }}
                                     </td>
                                 </tr>
@@ -43,10 +53,26 @@
                 </div>
             </div>
 
+            <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+                <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.sales_per_month_over_12_months' | trans }}</h2>
+
+                <div class="size-full">
+                    {{ render_chart(barChart) }}
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+                <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.product_availability_ratio' | trans }}</h2>
+
+                <div class="size-full">
+                    {{ render_chart(pieChart) }}
+                </div>
+            </div>
+
             {% set orderHeader = ['table.header.reference', 'table.header.created_at', 'table.header.order_by', 'table.header.status'] %}
 
             <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
-                <h2 class="text-lg text-fcp-white hidden sm:block">{{ 'title.last_5_orders' | trans }}</h2>
+                <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.last_5_orders' | trans }}</h2>
 
                 <div class="overflow-x-auto overflow-hidden p-1.5">
                     <table class="min-w-full divide-y divide-neutral-700">
@@ -78,8 +104,6 @@
                     </table>
                 </div>
             </div>
-
-            
         </div>
     </main>
 {% endblock %}

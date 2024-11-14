@@ -11,8 +11,12 @@ access_denied:
 
 # title
 title:
-    product_per_category: Number of products per category
-    last_5_orders: The last 5 orders
+    dashboard:
+        welcome: Welcome, %name%
+        product_per_category: Number of products per category
+        last_5_orders: The last 5 orders
+        product_availability_ratio: Product availability ratio
+        sales_per_month_over_12_months: Sales per month over the last 12 months
 
 # labels
 label:
@@ -25,7 +29,9 @@ label:
     delivered: Delivered
     canceled: Canceled
 
-    
+    available: Available
+    pre_order: Pre order
+    sold_out: Sold out
 
 # table
 table:

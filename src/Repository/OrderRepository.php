@@ -17,13 +17,14 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
-    public function findLastFiveOrders(bool $asQuery = false): array|Query
+    public function getLastFiveOrders(): array
     {
-        $query = $this->createQueryBuilder('o')
+        $result = $this->createQueryBuilder('o')
             ->orderBy('o.createdAt', 'DESC')
             ->setMaxResults(5)
-            ->getQuery();
+            ->getQuery()
+            ->getResult();
 
-        return $asQuery ? $query : $query->getResult();
+        return $result;
     }
 }

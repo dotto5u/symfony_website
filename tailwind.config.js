@@ -12,16 +12,15 @@ export const theme = {
       'fcp': ['Roboto', 'sans']
     },
     colors: {
-      'success-light': '#D1FAE5',
-      'success-dark': '#065F46',
-      'information-light': '#FEF3C7',
-      'information-dark': '#92400E',
-      'error-light': '#FEE2E2',
-      'error-dark': '#B91C1C',
+      'success-light': '#A8D5BA',
+      'success-dark': '#2E7D32',
+      'information-light': '#B3E5FC',
+      'information-dark': '#0288D1',
+      'error-light': '#FFCDD2',
+      'error-dark': '#C62828',
       'fcp-blue-light': '#1E2A47',
       'fcp-blue-dark': '#0D1B2A',
       'fcp-white': '#EAEAEA',
-      'fcp-orange': '#E67E22',
     },
     keyframes: {
       fadeIn: {
