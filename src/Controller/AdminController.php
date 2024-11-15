@@ -6,51 +6,41 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
-use App\Service\PaginationService;
 use App\Repository\ProductRepository;
 use App\Repository\OrderRepository;
 use App\Service\ChartService;
+use App\Service\DashboardChartService;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use App\Service\PaginationService;
 
 class AdminController extends AbstractController
 {
     #[Route('/admin/dashboard', name: 'app_admin_dashboard')]
-    public function dashboard(ProductRepository $productRepository, OrderRepository $orderRepository, ChartService $chartService, TranslatorInterface $translator): Response
-    {
+    public function dashboard(
+        ProductRepository $productRepository,  
+        OrderRepository $orderRepository, 
+        ChartService $chartService, 
+        DashboardChartService $dashboardChartService, 
+        TranslatorInterface $translator
+    ): Response {
         $productCount = $productRepository->getProductCountByCategory();
-        $orders = $orderRepository->getLastFiveOrders();
+        $lastFiveOrders = $orderRepository->getLastFiveOrders();
         $availabilityRatio = $productRepository->getAvailabilityRatio();
-        
-        $pieChartLabels = array_keys($availabilityRatio);
-        $pieChartLabelsTrans = array_map(function($label) use ($translator)
-        {
-            return $translator->trans('label.'.$label); 
-        }, 
-        $pieChartLabels);
-        $pieChartData = array_values($availabilityRatio);
-        $pieChartBackgroundColor = ['#2E7D32', '#0288D1', '#C62828'];
+        $salesOverLastTwelveMonths = $orderRepository->getSalesOverLastTwelveMonths();
 
-        $barChartLabels = ['Nov 2024', 'Oct 2024', 'Sep 2024', 'Aug 2024', 'Jul 2024', 'Jun 2024', 'May 2024', 'Apr 2024', 'Mar 2024', 'Feb 2024', 'Jan 2024', 'Dec 2023'];
-        $barChartData = [4800, 15200, 11800, 34500, 22100, 17800, 14200, 32700, 15800, 45000, 39000, 28300];
-        $barChartBackgroundColor = [
-            '#A8D5BA', '#2E7D32','#B3E5FC', '#0288D1', '#FFCDD2', '#C62828',
-            '#00BCD4', '#A8D5BA', '#2E7D32', '#B3E5FC','#0288D1','#FFCDD2'
-        ];
-
-        $pieChart = $chartService->createPieChart($pieChartLabelsTrans, $pieChartData, $pieChartBackgroundColor);
-        $barChart = $chartService->createBarChart($barChartLabels, $barChartData, $barChartBackgroundColor);
+        $pieChart = $dashboardChartService->preparePieChart($availabilityRatio, $chartService, $translator);
+        $barChart = $dashboardChartService->prepareBarChart($salesOverLastTwelveMonths, $chartService, $translator);
 
         return $this->render('admin/dashboard.html.twig', [
             'productCount' => $productCount,
-            'orders' => $orders,
+            'lastFiveOrders' => $lastFiveOrders,
             'pieChart' => $pieChart,
             'barChart' => $barChart,
         ]);
     }
 
     #[Route('/admin/products', name: 'app_admin_products')]
-    public function products(Request $request, ProductRepository $productRepository, PaginationService $paginationService): Response
-    {
+    public function products(Request $request, ProductRepository $productRepository, PaginationService $paginationService): Response {
         $query = $productRepository->getAll(true);
         $pagination = $paginationService->paginate($request, $query, 5);
 

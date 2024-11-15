@@ -41,12 +41,6 @@ class OrderItemFixtures extends Fixture implements DependentFixtureInterface
                 'product_ref' => 'product_3'
             ],
             [
-                'quantity' => 2,
-                'product_price' => 15000.00,
-                'order_ref' => 'order_3',
-                'product_ref' => 'product_3'
-            ],
-            [
                 'quantity' => 1,
                 'product_price' => 15000.00,
                 'order_ref' => 'order_4',
@@ -54,19 +48,19 @@ class OrderItemFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'quantity' => 1,
-                'product_price' => 1100.00,
-                'order_ref' => 'order_5',
-                'product_ref' => 'product_4'
+                'product_price' => 10000.00,
+                'order_ref' => 'order_4',
+                'product_ref' => 'product_2'
             ],
             [
                 'quantity' => 2,
-                'product_price' => 1100.00,
+                'product_price' => 9500.00,
                 'order_ref' => 'order_5',
-                'product_ref' => 'product_4'
+                'product_ref' => 'product_1'
             ],
             [
                 'quantity' => 1,
-                'product_price' => 2200.00,
+                'product_price' => 22000.00,
                 'order_ref' => 'order_6',
                 'product_ref' => 'product_5'
             ],
@@ -108,7 +102,7 @@ class OrderItemFixtures extends Fixture implements DependentFixtureInterface
             ],
             [
                 'quantity' => 2,
-                'product_price' => '13000.00',
+                'product_price' => 13000.00,
                 'order_ref' => 'order_10',
                 'product_ref' => 'product_9'
             ],
@@ -117,6 +111,60 @@ class OrderItemFixtures extends Fixture implements DependentFixtureInterface
                 'product_price' => 50000.00,
                 'order_ref' => 'order_11',
                 'product_ref' => 'product_10'
+            ],
+            [
+                'quantity' => 2,
+                'product_price' => 15000.00,
+                'order_ref' => 'order_12',
+                'product_ref' => 'product_3'
+            ],
+            [
+                'quantity' => 1,
+                'product_price' => 18000.00,
+                'order_ref' => 'order_13',
+                'product_ref' => 'product_4'
+            ],
+            [
+                'quantity' => 1,
+                'product_price' => 15000.00,
+                'order_ref' => 'order_14',
+                'product_ref' => 'product_3'
+            ],
+            [
+                'quantity' => 3,
+                'product_price' => 5000.00,
+                'order_ref' => 'order_15',
+                'product_ref' => 'product_6'
+            ],
+            [
+                'quantity' => 2,
+                'product_price' => 45000.00,
+                'order_ref' => 'order_16',
+                'product_ref' => 'product_10'
+            ],
+            [
+                'quantity' => 1,
+                'product_price' => 14000.00,
+                'order_ref' => 'order_17',
+                'product_ref' => 'product_7'
+            ],
+            [
+                'quantity' => 1,
+                'product_price' => 3500.00,
+                'order_ref' => 'order_18',
+                'product_ref' => 'product_2'
+            ],
+            [
+                'quantity' => 2,
+                'product_price' => 4500.00,
+                'order_ref' => 'order_19',
+                'product_ref' => 'product_5'
+            ],
+            [
+                'quantity' => 1,
+                'product_price' => 8000.00,
+                'order_ref' => 'order_20',
+                'product_ref' => 'product_2'
             ]
         ];
 

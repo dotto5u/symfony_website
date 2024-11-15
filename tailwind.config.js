@@ -62,6 +62,9 @@ export const plugins = [
   },
   function({ addComponents }) {
     addComponents({
+      '.fcp-card': {
+        '@apply flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark': {},
+      },
       '.fcp-label': {
         '@apply mb-1 block text-sm text-fcp-white font-medium': {},
       },

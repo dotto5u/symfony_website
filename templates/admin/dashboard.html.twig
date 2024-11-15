@@ -17,7 +17,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             {% set productsHeader = ['table.header.name', 'table.header.total'] %}
 
-            <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+            <div class="fcp-card">
                 <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.product_per_category' | trans }}</h2>
 
                 <div class="overflow-x-auto overflow-hidden p-1.5">
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+            <div class="fcp-card">
                 <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.sales_per_month_over_12_months' | trans }}</h2>
 
                 <div class="size-full">
@@ -61,7 +61,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+            <div class="fcp-card">
                 <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.product_availability_ratio' | trans }}</h2>
 
                 <div class="size-full">
@@ -71,7 +71,7 @@
 
             {% set orderHeader = ['table.header.reference', 'table.header.created_at', 'table.header.order_by', 'table.header.status'] %}
 
-            <div class="flex flex-col gap-5 p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+            <div class="fcp-card">
                 <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.last_5_orders' | trans }}</h2>
 
                 <div class="overflow-x-auto overflow-hidden p-1.5">
@@ -84,7 +84,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-neutral-700">
-                            {% for order in orders %}
+                            {% for order in lastFiveOrders %}
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-200">
                                         {{ order.reference }}

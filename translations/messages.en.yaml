@@ -12,7 +12,7 @@ access_denied:
 # title
 title:
     dashboard:
-        welcome: Welcome, %name%
+        welcome: Welcome back, %name% !
         product_per_category: Number of products per category
         last_5_orders: The last 5 orders
         product_availability_ratio: Product availability ratio
@@ -32,6 +32,20 @@ label:
     available: Available
     pre_order: Pre order
     sold_out: Sold out
+
+    month:
+        01: Jan
+        02: Feb
+        03: Mar
+        04: Apr
+        05: May
+        06: Jun
+        07: Jul
+        08: Aug
+        09: Sep
+        10: Oct
+        11: Nov
+        12: Dec
 
 # table
 table:

@@ -27,4 +27,53 @@ class OrderRepository extends ServiceEntityRepository
 
         return $result;
     }
+
+    public function getSalesOverLastTwelveMonths(): array
+    {
+        $startDate = (new \DateTime('first day of this month'))->modify('-12 months');
+        $endDate = new \DateTime('first day of this month');
+
+        $result = $this->createQueryBuilder('o')
+            ->select(
+                'YEAR(o.createdAt) AS year',
+                'LPAD(MONTH(o.createdAt), 2, 0) AS month',
+                'SUM(oi.quantity * oi.productPrice) AS total'
+            )
+            ->join('o.orderItems', 'oi')
+            ->where('o.createdAt >= :startDate')
+            ->andWhere('o.createdAt < :endDate')
+            ->groupBy('year, month')
+            ->orderBy('year', 'ASC')
+            ->addOrderBy('month', 'ASC')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
+            ->getQuery()
+            ->getResult();
+
+        $interval = new \DateInterval('P1M');
+        $period = new \DatePeriod($startDate, $interval, $endDate);
+
+        $monthlySales = array_reduce($result, function($sales, $sale) 
+        {
+            $key = $sale['year'].'-'.$sale['month'];
+            $sales[$key] = $sale['total'];
+            return $sales;
+        }, []);
+
+        foreach ($period as $date) 
+        {
+            $year = $date->format('Y');
+            $month = $date->format('m');
+            $key = $year.'-'.$month;
+    
+            $sales[] = 
+            [
+                'year' => $year,
+                'month' => $month,
+                'total' => $monthlySales[$key] ?? 0,
+            ];
+        }
+
+        return $sales;
+    }
 }
