@@ -8,14 +8,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DashboardChartService
 {
-    private ChartService $chartService;
-    private TranslatorInterface $translator;
-
-    public function __construct(ChartService $chartService, TranslatorInterface $translator)
-    {
-        $this->chartService = $chartService;
-        $this->translator = $translator;
-    }
+    public function __construct(private ChartService $chartService, private TranslatorInterface $translator) {}
 
     public function preparePieChart(array $availabilityRatio): Chart
     {

@@ -1,12 +1,9 @@
-<div 
-    data-controller="flash" class="min-w-[200px] mx-2 mb-4 p-4 flex items-center justify-between rounded-lg shadow-lg
-    text-fcp-blue-dark bg-{{ type }}-light transition transform duration-300 ease-out opacity-0 translate-x-full animate-slide-in"
->
+<div data-controller="flash" class="min-w-[200px] mx-2 mb-4 p-4 flex items-center justify-between rounded-lg shadow-lg text-fcp-blue-dark bg-{{ type }}-light transition transform duration-300 ease-out opacity-0 translate-x-full animate-slide-in">
     <div class="flex items-center gap-2 mr-10">
         {{ ux_icon('mdi:' ~ type ~ '', { class: 'w-5 h-5 text-' ~ type ~ '-dark' }) }}
         <span>{{ message | trans }}</span>
     </div>
-    <span data-action="click->flash#close">
+    <span data-action="click->flash#close" class="cursor-pointer">
         {{ ux_icon('ion:close', { class: 'w-5 h-5 text-fct-dark-blue' }) }}
     </span>
 </div>

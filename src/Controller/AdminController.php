@@ -6,23 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Repository\ProductRepository;
 use App\Repository\OrderRepository;
+use App\Repository\UserRepository;
 use App\Service\ChartService;
 use App\Service\DashboardChartService;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Service\PaginationService;
+use App\Service\RedirectService;
 
 class AdminController extends AbstractController
 {
     #[Route('/admin/dashboard', name: 'app_admin_dashboard')]
-    public function dashboard(
-        ProductRepository $productRepository,  
-        OrderRepository $orderRepository, 
-        ChartService $chartService, 
-        DashboardChartService $dashboardChartService, 
-        TranslatorInterface $translator
-    ): Response {
+    public function dashboard(ProductRepository $productRepository, OrderRepository $orderRepository, ChartService $chartService, DashboardChartService $dashboardChartService, TranslatorInterface $translator): Response {
         $productCount = $productRepository->getProductCountByCategory();
         $lastFiveOrders = $orderRepository->getLastFiveOrders();
         $availabilityRatio = $productRepository->getAvailabilityRatio();
@@ -39,13 +35,80 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/products', name: 'app_admin_products')]
-    public function products(Request $request, ProductRepository $productRepository, PaginationService $paginationService): Response {
+    #[Route('/admin/users/list', name: 'app_admin_users_list')]
+    public function userList(Request $request, UserRepository $userRepository, PaginationService $paginationService): Response 
+    {
+        // TODO
+
+        return $this->render('admin/users/list.html.twig', [
+            
+        ]);
+    }
+
+    #[Route('/admin/orders/list', name: 'app_admin_orders_list')]
+    public function orderList(Request $request, OrderRepository $orderRepository, PaginationService $paginationService): Response 
+    {
+        // TODO
+
+        return $this->render('admin/orders/list.html.twig', [
+            
+        ]);
+    }
+
+    #[Route('/admin/products/list', name: 'app_admin_products_list')]
+    public function productList(Request $request, ProductRepository $productRepository, PaginationService $paginationService): Response 
+    {
         $query = $productRepository->getAll(true);
         $pagination = $paginationService->paginate($request, $query, 5);
 
-        return $this->render('products/list.html.twig', [
-            'pagination' => $pagination,
+        return $this->render('admin/products/list.html.twig', [
+            'productPagination' => $pagination,
         ]);
+    }
+
+    #[Route('/admin/products/add', name: 'app_admin_products_add')]
+    public function productAdd(): Response
+    {
+        return $this->render('admin/products/add.html.twig');
+    }
+
+    #[Route('/admin/products/{id}/edit', name: 'app_admin_products_edit')]
+    public function productEdit(int $id, Request $request, ProductRepository $productRepository, RedirectService $redirectService): Response
+    {
+        $product = $productRepository->getById($id);
+
+        if ($product === null) {
+            $type = 'error';
+            $message = 'flash.product_not_found';
+            $fallbackRoute = 'app_admin_products_list';
+
+            return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
+        }
+
+        return $this->render('admin/products/edit.html.twig', [
+            'product' => $product,
+        ]);
+    }
+
+    #[Route('/admin/products/{id}/delete', name: 'app_admin_products_delete')]
+    public function productDelete(int $id, Request $request, ProductRepository $productRepository, RedirectService $redirectService): Response
+    {   
+        $product = $productRepository->getById($id);
+
+        $type = 'error';
+        $message = '';
+        $fallbackRoute = 'app_admin_products_list';
+
+        if ($product === null) {
+            $message = 'flash.product_not_found';
+
+            return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
+        }
+
+        // TODO
+
+        $message = 'flash.product_cannot_be_deleted';
+
+        return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
     }
 }

@@ -18,7 +18,7 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function getAll(bool $asQuery = false): array|Query
+    public function getAll(bool $asQuery = false): array | Query
     {
         $query = $this->createQueryBuilder('p')
             ->getQuery();
@@ -26,13 +26,18 @@ class ProductRepository extends ServiceEntityRepository
         return $asQuery ? $query : $query->getResult();
     }
 
+    public function getById(int $id): ?Product
+    {
+        return $this->find($id);
+    }
+
     public function getProductCountByCategory(): array
     {
         $result = $this->createQueryBuilder('p')
-            ->select('c.name AS categoryName', 'COUNT(p.id) AS productCount')
+            ->select('c.name AS name', 'COUNT(p.id) AS values')
             ->join('p.categories', 'c')
             ->groupBy('c.id')
-            ->orderBy('productCount', 'DESC')
+            ->orderBy('values', 'DESC')
             ->getQuery()
             ->getResult();
 

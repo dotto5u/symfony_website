@@ -9,12 +9,7 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 
 class PaginationService
 {
-    private $paginator;
-
-    public function __construct(PaginatorInterface $paginator)
-    {
-        $this->paginator = $paginator;
-    }
+    public function __construct(private PaginatorInterface $paginator) {}
 
     public function paginate(Request $request, Query $query, int $limit = 5): PaginationInterface
     {

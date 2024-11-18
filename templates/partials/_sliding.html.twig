@@ -1,0 +1,31 @@
+{% if pageCount > 1 %}
+    <div class="flex items-center gap-x-1 mb-2">
+        {% if previous is defined %}
+            <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all | merge({'page': previous})) }}" class="min-w-[40px] inline-flex justify-center items-center gap-x-2 p-1.5 text-sm rounded-full text-neutral-200 hover:bg-neutral-500 focus:outline-none transition duration-300">
+                {{ ux_icon('material-symbols-light:keyboard-double-arrow-left-rounded', { class: 'w-7 h-7 text-neutral-200' }) }}
+            </a>
+        {% else %}
+            <button class="min-w-[40px] inline-flex justify-center items-center gap-x-2 p-1.5 text-sm rounded-full text-gray-800 focus:outline-none disabled:opacity-50 disabled:pointer-events-none disabled transition duration-300">
+                {{ ux_icon('material-symbols-light:keyboard-double-arrow-left-rounded', { class: 'w-7 h-7 text-neutral-700' }) }}
+            </button>
+        {% endif %}
+
+        {% for page in pagesInRange %}
+            {% if page == current %}
+                <button type="button" class="min-w-[40px] flex justify-center items-center py-2.5 text-sm rounded-full text-neutral-200 bg-neutral-500 hover:bg-neutral-600 transition duration-300">{{ page }}</button>
+            {% else %}
+                <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all | merge({'page': page})) }}" class="min-w-[40px] flex justify-center items-center py-2.5 text-sm rounded-full text-neutral-200 hover:bg-neutral-500 focus:outline-none transition duration-300">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if next is defined %}
+            <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all | merge({'page': next})) }}" class="min-w-[40px] inline-flex justify-center items-center gap-x-2 p-1.5 text-sm rounded-full text-neutral-200 hover:bg-neutral-500 focus:outline-none transition duration-300">
+                {{ ux_icon('material-symbols-light:keyboard-double-arrow-right-rounded', { class: 'w-7 h-7 text-neutral-200' }) }}
+            </a>
+        {% else %}
+            <button class="min-w-[40px] inline-flex justify-center items-center gap-x-2 p-1.5 text-sm rounded-full text-fcp-blue-dark focus:outline-none disabled:opacity-50 disabled:pointer-events-none disabled transition duration-300">
+                {{ ux_icon('material-symbols-light:keyboard-double-arrow-right-rounded', { class: 'w-7 h-7 text-neutral-700' }) }}
+            </button>
+        {% endif %}
+    </div>
+{% endif %}

@@ -9,8 +9,15 @@ access_denied:
     login: You are already logged in
     admin: You are not authorized to access this page
 
+# flash
+flash:
+    product_not_found: Product not found
+    product_cannot_be_deleted: The product cannot be deleted
+
 # title
 title:
+    products:
+        list: List of products
     dashboard:
         welcome: Welcome back, %name% !
         product_per_category: Number of products per category
@@ -23,6 +30,7 @@ label:
     users: Users
     orders: Orders
     products: Products
+    add: Add
 
     in_preparation: In preparation
     shipped: Shipped
@@ -32,6 +40,10 @@ label:
     available: Available
     pre_order: Pre order
     sold_out: Sold out
+
+    view: View
+    edit: Edit
+    delete: Delete
 
     month:
         01: Jan
@@ -52,10 +64,13 @@ table:
     header:
         name: Name
         total: Total
+        price: Price
+        stock: Stock
         reference: Reference
         created_at: Date
         order_by: By
         status: Status
+        action: Action
 
 # login
 login:

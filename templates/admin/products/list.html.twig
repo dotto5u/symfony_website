@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'partials/_navbar.html.twig' %}
+{% endblock %}
+
+{% block main %}
+    <main class="mx-6 my-12 sm:mx-36 sm:my-20">
+        <div class="fcp-card">
+            <h2 class="text-xl text-fcp-white">{{ 'title.products.list' | trans }}</h2>
+            
+            <div class="flex flex-col gap-5">
+                {% set productHeader = [
+                    { label: 'table.header.name', center: false },
+                    { label: 'table.header.price', center: false },
+                    { label: 'table.header.stock', center: true },
+                    { label: 'table.header.status', center: false },
+                    { label: 'table.header.action', center: false },
+                ] %}
+
+                {% set productBody = productPagination | map(product => [
+                    { content: product.name, center: false },
+                    { content: product.price ~ ' €', center: false },
+                    { content: product.stock, center: true },
+                    { content: ('label.' ~ product.status.value) | trans, center: false },
+                    { content: {
+                        view: { route: 'app_products_view', params: { id: product.id } }, 
+                        modify: { route: 'app_admin_products_edit', params: { id: product.id } },
+                        delete: { route: 'app_admin_products_delete', params: { id: product.id } },
+                    }, center: false },
+                ]) %}
+
+                {% include 'partials/_table.html.twig' with { header: productHeader, body: productBody, pagination: productPagination } %}
+                
+                <div class="flex justify-start">
+                    <span><a href="{{ path('app_admin_products_add') }}" class="px-7 fcp-button">{{ 'label.add' | trans }}</a></span>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

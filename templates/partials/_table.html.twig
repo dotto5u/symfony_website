@@ -1,0 +1,60 @@
+<div class="overflow-x-auto overflow-hidden flex flex-col p-1.5 gap-2">
+    <table class="min-w-full divide-y divide-neutral-700">
+        <thead>
+            <tr>
+                {% for column in header %}
+                    <th class="px-6 py-3 text-xs font-medium 
+                        {% if column.center %} 
+                            text-center 
+                        {% else %} 
+                            text-start 
+                        {% endif %}
+                        text-neutral-500 uppercase">
+                        {{ column.label | trans }}
+                    </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-neutral-700">
+            {% for row in body %}
+                <tr>
+                    {% for cell in row %}
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium 
+                            {% if cell.center %} 
+                                text-center 
+                            {% else %} 
+                                text-start 
+                            {% endif %}
+                            text-neutral-200">
+                            {% if cell.content is iterable %}
+                                <div class="flex flex-wrap justify-center gap-3 sm:justify-start">
+                                    {% if cell.content.view is defined %}
+                                        <a href="{{ path(cell.content.view.route, cell.content.view.params) }}" class="text-sm rounded-lg text-success-light hover:text-success-dark transition duration-300">
+                                            {{ 'label.view' | trans }}
+                                        </a>
+                                    {% endif %}
+                                    {% if cell.content.modify is defined %}
+                                        <a href="{{ path(cell.content.modify.route, cell.content.modify.params) }}" class="text-sm rounded-lg text-information-light hover:text-information-dark transition duration-300">
+                                            {{ 'label.edit' | trans }}
+                                        </a>
+                                    {% endif %}
+                                    {% if cell.content.delete is defined %}
+                                        <a href="{{ path(cell.content.delete.route, cell.content.delete.params) }}" class="text-sm rounded-lg text-error-light hover:text-error-dark transition duration-300">
+                                            {{ 'label.delete' | trans }}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                {{ cell.content }}
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if pagination is defined %}
+        {{ knp_pagination_render(pagination) }}
+    {% endif %}
+</div>

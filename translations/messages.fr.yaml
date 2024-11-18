@@ -9,8 +9,15 @@ access_denied:
     login: Vous êtes déjà connecté
     admin: Vous n\'avez pas l\'autorisation d\'accéder à cette page
 
+# flash
+flash:
+    product_not_found: Produit introuvable
+    product_cannot_be_deleted: Le produit ne peut pas être supprimé
+
 # title
 title:
+    products:
+        list: Liste des produits
     dashboard:
         welcome: Bienvenue, %name% !
         product_per_category: Nombre de produits par catégorie
@@ -23,6 +30,7 @@ label:
     users: Utilisateurs
     orders: Commandes
     products: Produits
+    add: Ajouter
 
     in_preparation: En préparation
     shipped: Expédiée
@@ -32,6 +40,10 @@ label:
     available: Disponible
     pre_order: En précommande
     sold_out: En rupture
+
+    view: Voir
+    edit: Modifier
+    delete: Supprimer
 
     month:
         01: Janv
@@ -52,10 +64,13 @@ table:
     header:
         name: Nom
         total: Total
+        price: Prix
+        stock: Stock
         reference: Référence
         created_at: Le
         order_by: Par
         status: Status
+        action: Action
 
 # login
 login:
