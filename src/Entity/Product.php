@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -18,24 +20,51 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'error.product.name.not_blank')]
+    #[Assert\Length(max: 25, maxMessage: 'error.product.name.length')]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 2)]
+    #[Assert\NotNull(message: 'error.product.price.not_null')]
+    #[Assert\Type(type: 'numeric', message: 'error.product.price.numeric')]
+    #[Assert\Positive(message: 'error.product.price.positive')]
     private ?string $price = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'error.product.description.not_blank')]
+    #[Assert\Length(max: 125, maxMessage: 'error.product.description.length')]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: 'error.product.stock.not_null')]
+    #[Assert\Type(type: 'numeric', message: 'error.product.stock.numeric')]
+    #[Assert\GreaterThanOrEqual(value: 0, message: 'error.product.stock.greater_than_or_equal')]
     private ?int $stock = null;
 
     #[ORM\Column(enumType: ProductStatus::class)]
     private ?ProductStatus $status = null;
 
+    #[Assert\Callback]
+    public function validateStatusAndStock(ExecutionContextInterface $context): void
+    {
+        if ($this->status === ProductStatus::AVAILABLE && $this->stock <= 0) {
+            $context->buildViolation('error.product.status.available')
+                ->atPath('status')
+                ->addViolation();
+        }
+
+        if ($this->status === ProductStatus::SOLD_OUT && $this->stock > 0) {
+            $context->buildViolation('error.product.status.sold_out')
+                ->atPath('status')
+                ->addViolation();
+        }
+    }
+
     /**
      * @var Collection<int, Category>
      */
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'products')]
+    #[Assert\Count(min: 1, minMessage: 'error.product.categories.at_least_one')]
     #[ORM\JoinColumn(nullable: false)]
     private Collection $categories;
 
@@ -45,7 +74,9 @@ class Product
     #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'product', orphanRemoval: true)]
     private Collection $orderItems;
 
-    #[ORM\OneToOne(mappedBy: 'product')]
+    #[ORM\ManyToOne(targetEntity: Image::class, inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: 'error.product.image.not_null')]
     private ?Image $image = null;
 
     public function __construct()
@@ -178,13 +209,8 @@ class Product
         return $this->image;
     }
 
-    public function setImage(Image $image): static
+    public function setImage(?Image $image): static
     {
-        // set the owning side of the relation if necessary
-        if ($image->getProduct() !== $this) {
-            $image->setProduct($this);
-        }
-
         $this->image = $image;
 
         return $this;

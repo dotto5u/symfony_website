@@ -6,7 +6,7 @@ export const content = [
 export const theme = {
   extend: {
     screens: {
-      '2sm': '396px',
+      'xs': '396px',
     },
     fontFamily: {
       'fcp': ['Roboto', 'sans']
@@ -67,6 +67,9 @@ export const plugins = [
       },
       '.fcp-label': {
         '@apply mb-1 block text-sm text-fcp-white font-medium': {},
+      },
+      '.fcp-error': {
+        '@apply mt-2 text-sm text-error-dark': {},
       },
       '.fcp-input': {
         '@apply w-full p-2 border border-gray-700 rounded-md bg-fcp-blue-dark text-fcp-white focus:outline-none focus:border-cyan-600 focus:ring-2 transition duration-200': {},

@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ProductRepository;
 use App\Repository\OrderRepository;
 use App\Repository\UserRepository;
@@ -14,6 +16,7 @@ use App\Service\ChartService;
 use App\Service\DashboardChartService;
 use App\Service\PaginationService;
 use App\Service\RedirectService;
+use App\Form\ProductFormType;
 
 class AdminController extends AbstractController
 {
@@ -67,9 +70,27 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/products/add', name: 'app_admin_products_add')]
-    public function productAdd(): Response
-    {
-        return $this->render('admin/products/add.html.twig');
+    public function productAdd(Request $request, EntityManagerInterface $em, RedirectService $redirectService): Response
+    {   
+        $product = new Product();
+
+        $form = $this->createForm(ProductFormType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($product);
+            $em->flush();
+
+            $type = 'success';
+            $message = 'flash.product.added';
+            $fallbackRoute = 'app_admin_products_list';
+     
+            return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
+        }
+
+        return $this->render('admin/products/add.html.twig', [
+            'form' => $form,
+        ]);
     }
 
     #[Route('/admin/products/{id}/edit', name: 'app_admin_products_edit')]
@@ -79,7 +100,7 @@ class AdminController extends AbstractController
 
         if ($product === null) {
             $type = 'error';
-            $message = 'flash.product_not_found';
+            $message = 'flash.product.not_found';
             $fallbackRoute = 'app_admin_products_list';
 
             return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
@@ -100,14 +121,14 @@ class AdminController extends AbstractController
         $fallbackRoute = 'app_admin_products_list';
 
         if ($product === null) {
-            $message = 'flash.product_not_found';
+            $message = 'flash.product.not_found';
 
             return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
         }
 
         // TODO
 
-        $message = 'flash.product_cannot_be_deleted';
+        $message = 'flash.product.cannot_be_deleted';
 
         return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
     }

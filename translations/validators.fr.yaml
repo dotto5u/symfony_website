@@ -1,0 +1,29 @@
+# authentication
+Invalid credentials.: Email ou mot de passe incorrect
+User account is disabled.: Le compte utilisateur est désactivé
+User account is locked.: Le compte utilisateur est verrouillé
+
+# error
+error:
+    product:
+        name:
+            not_blank: Le nom ne doit pas être vide
+            length: Le nom ne doit pas dépasser {{ limit }} caractères
+        price:
+            not_null: Le prix ne doit pas être vide
+            numeric: Le prix doit être un nombre
+            positive: Le prix doit être supérieur à 0
+        description:
+            not_blank: La description ne doit pas être vide
+            length: La description ne doit pas dépasser {{ limit }} caractères
+        stock:
+            not_null: Le stock ne doit pas être vide
+            numeric: Le stock doit être un nombre
+            greater_than_or_equal: Le stock doit être supérieur ou égal à {{ compared_value }}
+        status:
+            available: Le statut ne peut pas être « Disponible » lorsque le stock est de 0
+            sold_out: Le statut ne peut pas être « En rupture » lorsque le stock est supérieur à 0
+        categories:
+            at_least_one: Vous devez sélectionner au moins une catégorie
+        image:
+            not_null: Une image doit être sélectionnée

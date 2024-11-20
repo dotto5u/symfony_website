@@ -1,8 +1,3 @@
-# authentication
-Invalid credentials.: Incorrect email or password
-User account is disabled.: The user account is disabled
-User account is locked.: The user account is locked
-
 # access denied
 access_denied:
     default: Access denied
@@ -11,13 +6,36 @@ access_denied:
 
 # flash
 flash:
-    product_not_found: Product not found
-    product_cannot_be_deleted: The product cannot be deleted
+    product:
+        not_found: Product not found
+        cannot_be_deleted: The product cannot be deleted
+        added: The product has been successfully added
+        modified: The product has been successfully modified
+        deleted: The product has been successfully deleted
+
+# navbar
+nav:
+    home: Home
+    products: Products
+    dashboard: Dashboard
+    cart: Cart
+    sign_in: Sign in
+    sign_out: Sign out
+
+# table
+table:
+    header:
+        total: Total
+        created_at: Date
+        order_by: By
+        action: Action
 
 # title
 title:
-    products:
+    login: Login to your account
+    product:
         list: List of products
+        form: Add a product
     dashboard:
         welcome: Welcome back, %name% !
         product_per_category: Number of products per category
@@ -25,23 +43,37 @@ title:
         product_availability_ratio: Product availability ratio
         sales_per_month_over_12_months: Sales per month over the last 12 months
 
-# labels
+# label
 label:
-    users: Users
-    orders: Orders
-    products: Products
-    add: Add
-
-    in_preparation: In preparation
-    shipped: Shipped
-    delivered: Delivered
-    canceled: Canceled
-
-    available: Available
-    pre_order: Pre order
-    sold_out: Sold out
+    entity:
+        price: Price
+        status: Status
+    user: 
+        users: Users
+    order: 
+        orders: Orders
+        reference: Reference
+        in_preparation: In preparation
+        shipped: Shipped
+        delivered: Delivered
+        canceled: Canceled
+    product: 
+        products: Products
+        name: Name
+        description: Description
+        stock: Stock
+        categories: Categories
+        available: Available
+        pre_order: Pre order
+        sold_out: Sold out
+        image: Image
+    login:
+        email: Email
+        password: Password
+        submit: Login
 
     view: View
+    add: Add
     edit: Edit
     delete: Delete
 
@@ -59,36 +91,13 @@ label:
         11: Nov
         12: Dec
 
-# table
-table:
-    header:
-        name: Name
-        total: Total
-        price: Price
-        stock: Stock
-        reference: Reference
-        created_at: Date
-        order_by: By
-        status: Status
-        action: Action
-
-# login
-login:
-    title: 'Login to your account'
-    email:
-        label: 'Email'
-        placeholder: 'Enter your email'
-    password:
-        label: 'Password'
-        placeholder: 'Enter your password'
-    submit:
-        label: 'Login'
-
-# navbar
-nav:
-    home: 'Home'
-    products: 'Products'
-    dashboard: 'Dashboard'
-    cart: 'Cart'
-    sign_in: 'Sign in'
-    sign_out: 'Sign out'
+placeholder:
+    product:
+        name: Enter product name
+        price: Enter product price
+        description: Enter product description
+        stock: Enter product stock
+        image: Select an image
+    login:
+        email: Enter your email
+        password: Enter your password

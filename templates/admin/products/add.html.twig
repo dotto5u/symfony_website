@@ -6,6 +6,70 @@
 
 {% block main %}
     <main class="mx-6 my-12 sm:mx-36 sm:my-20">
-        <h1 class="text-fcp-white text-2xl">Product add page !</h1>
+        <div class="max-w-3xl mx-auto p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+            <h2 class="mb-4 text-center text-lg text-fcp-white font-semibold">{{ 'title.product.form' | trans }}</h2>
+
+            {{ form_start(form) }}
+                <div class="mb-4">
+                    {{ form_label(form.name, null, {'label_attr': {'class': 'fcp-label'}}) }}
+                    {{ form_widget(form.name, {'attr': {'class': 'fcp-input'}}) }}
+                    <div class="fcp-error">
+                        {{ form_errors(form.name) }}
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    {{ form_label(form.price, null, {'label_attr': {'class': 'fcp-label'}}) }}
+                    {{ form_widget(form.price, {'attr': {'class': 'fcp-input'}}) }}
+                    <div class="fcp-error">
+                        {{ form_errors(form.price) }}
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    {{ form_label(form.description, null, {'label_attr': {'class': 'fcp-label'}}) }}
+                    {{ form_widget(form.description, {'attr': {'class': 'fcp-input resize-none overflow-wrap break-words'}}) }}
+                    <div class="fcp-error">
+                        {{ form_errors(form.description) }}
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    {{ form_label(form.stock, null, {'label_attr': {'class': 'fcp-label'}}) }}
+                    {{ form_widget(form.stock, {'attr': {'class': 'fcp-input'}}) }}
+                    <div class="fcp-error">
+                        {{ form_errors(form.stock) }}
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    {{ form_label(form.status, null, {'label_attr': {'class': 'fcp-label'}}) }}
+                    {{ form_widget(form.status, {'attr': {'class': 'fcp-input'}}) }}
+                    <div class="fcp-error">
+                        {{ form_errors(form.status) }}
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    {{ form_label(form.categories, null, {'label_attr': {'class': 'fcp-label'}}) }}
+                    {{ form_widget(form.categories, {'attr': {'class': 'fcp-input'}}) }}
+                    <div class="fcp-error">
+                        {{ form_errors(form.categories) }}
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    {{ form_label(form.image, null, {'label_attr': {'class': 'fcp-label'}}) }}
+                    {{ form_widget(form.image, {'attr': {'class': 'fcp-input'}}) }}
+                    <div class="fcp-error">
+                        {{ form_errors(form.image) }}
+                    </div>
+                </div>
+
+                <div>
+                    {{ form_widget(form.submit, {'attr': {'class': 'fcp-button'}}) }}
+                </div>
+            {{ form_end(form) }}
+        </div>
     </main>
 {% endblock %}

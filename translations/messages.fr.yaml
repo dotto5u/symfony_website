@@ -1,23 +1,41 @@
-# authentication
-Invalid credentials.: Email ou mot de passe incorrect
-User account is disabled.: Le compte utilisateur est désactivé
-User account is locked.: Le compte utilisateur est verrouillé
-
 # access denied
 access_denied:
     default: Accès refusé
     login: Vous êtes déjà connecté
-    admin: Vous n\'avez pas l\'autorisation d\'accéder à cette page
+    admin: Vous n\avez pas l\autorisation d\accéder à cette page
 
 # flash
 flash:
-    product_not_found: Produit introuvable
-    product_cannot_be_deleted: Le produit ne peut pas être supprimé
+    products:
+        not_found: Produit introuvable
+        cannot_be_deleted: Le produit ne peut pas être supprimé
+        added: Le produit a été ajouté avec succès
+        modified: Le produit a été modifié avec succès
+        deleted: Le produit a été supprimé avec succès
+
+# navbar
+nav:
+    home: Accueil
+    products: Produits
+    dashboard: Tableau de bord
+    cart: Panier
+    sign_in: Connexion
+    sign_out: Déconnexion
+
+# table
+table:
+    header:
+        total: Total
+        created_at: Le
+        order_by: Par
+        action: Action
 
 # title
 title:
-    products:
+    login: Connectez-vous à votre compte
+    product:
         list: Liste des produits
+        form: Ajouter un produit
     dashboard:
         welcome: Bienvenue, %name% !
         product_per_category: Nombre de produits par catégorie
@@ -25,23 +43,37 @@ title:
         product_availability_ratio: Ratio de disponibilité des produits
         sales_per_month_over_12_months: Montant des ventes par mois sur les 12 derniers mois
 
-# labels
+# label
 label:
-    users: Utilisateurs
-    orders: Commandes
-    products: Produits
-    add: Ajouter
-
-    in_preparation: En préparation
-    shipped: Expédiée
-    delivered: Livrée
-    canceled: Annulée
-
-    available: Disponible
-    pre_order: En précommande
-    sold_out: En rupture
-
+    entity:
+        price: Prix
+        status: Status
+    user: 
+        users: Utilisateurs
+    order: 
+        orders: Commandes
+        reference: Référence
+        in_preparation: En préparation
+        shipped: Expédiée
+        delivered: Livrée
+        canceled: Annulée
+    product: 
+        products: Produits
+        description: Description
+        name: Nom
+        stock: Stock
+        categories: Catégories
+        available: Disponible
+        pre_order: En précommande
+        sold_out: En rupture
+        image: Image
+    login:
+        email: Email
+        password: Mot de passe
+        submit: Se connecter
+    
     view: Voir
+    add: Ajouter
     edit: Modifier
     delete: Supprimer
 
@@ -59,36 +91,13 @@ label:
         11: Nov
         12: Déc
 
-# table
-table:
-    header:
-        name: Nom
-        total: Total
-        price: Prix
-        stock: Stock
-        reference: Référence
-        created_at: Le
-        order_by: Par
-        status: Status
-        action: Action
-
-# login
-login:
-    title: 'Connectez-vous à votre compte'
-    email:
-        label: 'Email'
-        placeholder: 'Entrez votre email'
-    password:
-        label: 'Mot de passe'
-        placeholder: 'Entrez votre mot de passe'
-    submit:
-        label: 'Se connecter'
-
-# navbar
-nav:
-    home: 'Accueil'
-    products: 'Produits'
-    dashboard: 'Tableau de bord'
-    cart: 'Panier'
-    sign_in: 'Connexion'
-    sign_out: 'Déconnexion'
+placeholder:
+    product:
+        name: Entrer le nom du produit
+        price: Entrer le prix du produit
+        description: Entrer la description du produit
+        stock: Entrer le stock du produit
+        image: Sélectionnez une image
+    login:
+        email: Entrez votre mot de passe
+        password: Entrez votre email

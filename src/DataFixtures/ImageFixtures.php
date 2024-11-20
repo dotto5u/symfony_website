@@ -4,11 +4,9 @@ namespace App\DataFixtures;
 
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Image;
-use App\DataFixtures\ProductFixtures;
 
-class ImageFixtures extends Fixture implements DependentFixtureInterface
+class ImageFixtures extends Fixture
 {
     private const IMAGE_REF_PREFIX = 'image_';
 
@@ -16,46 +14,36 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
     {
         $imagesData = [
             [
-                'url' => 'yamaha-u1.jpg',
-                'product_ref' => 'product_1'
+                'url' => 'yamaha-u1.jpg'
             ],
             [
-                'url' => 'kawai-k300.jpg',
-                'product_ref' => 'product_2'
+                'url' => 'kawai-k300.jpg'
             ],
             [
-                'url' => 'steinway_sons_B.jpg',
-                'product_ref' => 'product_3'
+                'url' => 'steinway_sons_B.jpg'
             ],
             [
-                'url' => 'casio-privia-px870B.jpg',
-                'product_ref' => 'product_4'
+                'url' => 'casio-privia-px870B.jpg'
             ],
             [
-                'url' => 'roland_hp_704.jpg',
-                'product_ref' => 'product_5'
+                'url' => 'roland_hp_704.jpg'
             ],
             [
-                'url' => 'yamaha-clp-775.jpg',
-                'product_ref' => 'product_6'
+                'url' => 'yamaha-clp-775.jpg'
             ],
             [
-                'url' => 'f278.jpg',
-                'product_ref' => 'product_7'
+                'url' => 'f278.jpg'
             ],
             [
-                'url' => 'korg_grandstage_88.jpg',
-                'product_ref' => 'product_8'
+                'url' => 'korg_grandstage_88.jpg'
             ],
             [
-                'url' => 'bluthner_model_1.jpg',
-                'product_ref' => 'product_9'
+                'url' => 'bluthner_model_1.jpg'
             ],
             [
-                'url' => 'soft_&_wet.jpg',
-                'product_ref' => 'product_10'
+                'url' => 'soft_&_wet.jpg'
             ],
-        ];
+        ];        
 
         foreach ($imagesData as $key => $imageData) {
             $image = $this->createImage($imageData);
@@ -70,15 +58,7 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
     {
         $image = new Image();
         $image->setUrl($data['url']);
-        $image->setProduct($this->getReference($data['product_ref']));
 
         return $image;
-    }
-
-    public function getDependencies()
-    {
-        return [
-            ProductFixtures::class
-        ];
     }
 }

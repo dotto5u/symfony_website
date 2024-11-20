@@ -9,9 +9,9 @@
         <h1 class="pb-10 text-center text-3xl text-fcp-white">{{ 'title.dashboard.welcome' | trans({ '%name%': app.user.lastName }) }}</h1>
 
         <div class="flex flex-wrap justify-center gap-4 mb-8 sm:justify-start">
-            <span><a href="{{ path('app_admin_users_list', { 'page': 1 }) }}" class="px-4 py-2 fcp-button">{{ 'label.users' | trans }}</a></span>
-            <span><a href="{{ path('app_admin_orders_list', { 'page': 1 }) }}" class="px-4 py-2 fcp-button">{{ 'label.orders' | trans }}</a></span>
-            <span><a href="{{ path('app_admin_products_list', { 'page': 1 }) }}" class="px-4 py-2 fcp-button">{{ 'label.products' | trans }}</a></span>
+            <span><a href="{{ path('app_admin_users_list', { 'page': 1 }) }}" class="px-4 py-2 fcp-button">{{ 'label.user.users' | trans }}</a></span>
+            <span><a href="{{ path('app_admin_orders_list', { 'page': 1 }) }}" class="px-4 py-2 fcp-button">{{ 'label.order.orders' | trans }}</a></span>
+            <span><a href="{{ path('app_admin_products_list', { 'page': 1 }) }}" class="px-4 py-2 fcp-button">{{ 'label.product.products' | trans }}</a></span>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
@@ -19,17 +19,17 @@
                 <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.last_5_orders' | trans }}</h2>
 
                 {% set orderHeader = [
-                    { label: 'table.header.reference', center: false },
+                    { label: 'label.order.reference', center: false },
                     { label: 'table.header.created_at', center: false },
                     { label: 'table.header.order_by', center: false },
-                    { label: 'table.header.status', center: false }, 
+                    { label: 'label.entity.status', center: false }, 
                 ] %}
 
                 {% set orderBody = lastFiveOrders | map(order => [
                     { content: order.reference, center: false },
                     { content: order.createdAt | date('d/m/Y'), center: false },
                     { content: order.user.fullName, center: false },
-                    { content: ('label.' ~ order.status.value) | trans, center: false },
+                    { content: ('label.order.' ~ order.status.value) | trans, center: false },
                 ]) %}
 
                 {% include 'partials/_table.html.twig' with { header: orderHeader, body: orderBody } %}
@@ -54,7 +54,7 @@
             <div class="fcp-card">
                 <h2 class="text-xl text-fcp-white">{{ 'title.dashboard.product_per_category' | trans }}</h2>
                 {% set productHeader = [
-                    { label: 'table.header.name', center: false }, 
+                    { label: 'label.product.name', center: false }, 
                     { label: 'table.header.total', center: true }, 
                 ] %}
 

@@ -7,33 +7,27 @@
 {% block main %}
     <main class="relative my-20 flex flex-col items-center">
         {% if error %}
-            <div class="absolute w-80 top-0 p-5 bg-red-400 rounded-md text-center text-fcp-blue-dark animate-fade-in 2sm:w-96">
-                {{ error.messageKey | trans(error.messageData, 'messages') }}
+            <div class="absolute w-80 top-0 p-5 bg-red-400 rounded-md text-center text-fcp-blue-dark animate-fade-in xs:w-96">
+                {{ error.messageKey | trans(error.messageData, 'validators') }}
             </div>
         {% endif %}
 
-        <div class="w-80 mt-20 p-8 rounded-md shadow-lg bg-fcp-blue-dark 2sm:w-96">
-            <h2 class="mb-4 text-center text-lg text-fcp-white font-semibold">{{ 'login.title' | trans }}</h2>
+        <div class="w-80 mt-20 p-8 rounded-md shadow-lg bg-fcp-blue-dark xs:w-96">
+            <h2 class="mb-4 text-center text-lg text-fcp-white font-semibold">{{ 'title.login' | trans }}</h2>
 
             {{ form_start(form) }}
                 <div class="mb-4">
                     {{ form_label(form.email, null, {'label_attr': {'class': 'fcp-label'}}) }}
-                    {{ form_widget(form.email, {'attr': {
-                        'class': 'fcp-input'
-                    }}) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'fcp-input'}}) }}
                 </div>
 
                 <div class="mb-4">
                     {{ form_label(form.password, null, {'label_attr': {'class': 'fcp-label'}}) }}
-                    {{ form_widget(form.password, {'attr': {
-                        'class': 'fcp-input'
-                    }}) }}
+                    {{ form_widget(form.password, {'attr': {'class': 'fcp-input'}}) }}
                 </div>
 
                 <div>
-                    {{ form_widget(form.submit, {'attr': {
-                        'class': 'fcp-button'
-                    }}) }}
+                    {{ form_widget(form.submit, {'attr': {'class': 'fcp-button'}}) }}
                 </div>
             {{ form_end(form) }}
         </div>

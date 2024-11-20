@@ -7,14 +7,14 @@
 {% block main %}
     <main class="mx-6 my-12 sm:mx-36 sm:my-20">
         <div class="fcp-card">
-            <h2 class="text-xl text-fcp-white">{{ 'title.products.list' | trans }}</h2>
+            <h2 class="text-xl text-fcp-white">{{ 'title.product.list' | trans }}</h2>
             
             <div class="flex flex-col gap-5">
                 {% set productHeader = [
-                    { label: 'table.header.name', center: false },
-                    { label: 'table.header.price', center: false },
-                    { label: 'table.header.stock', center: true },
-                    { label: 'table.header.status', center: false },
+                    { label: 'label.product.name', center: false },
+                    { label: 'label.entity.price', center: false },
+                    { label: 'label.product.stock', center: true },
+                    { label: 'label.entity.status', center: false },
                     { label: 'table.header.action', center: false },
                 ] %}
 
@@ -22,7 +22,7 @@
                     { content: product.name, center: false },
                     { content: product.price ~ ' €', center: false },
                     { content: product.stock, center: true },
-                    { content: ('label.' ~ product.status.value) | trans, center: false },
+                    { content: ('label.product.' ~ product.status.value) | trans, center: false },
                     { content: {
                         view: { route: 'app_products_view', params: { id: product.id } }, 
                         modify: { route: 'app_admin_products_edit', params: { id: product.id } },

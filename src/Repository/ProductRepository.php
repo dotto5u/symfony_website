@@ -53,9 +53,9 @@ class ProductRepository extends ServiceEntityRepository
                 'SUM(CASE WHEN p.status = :soldOut THEN 1 ELSE 0 END) AS soldOut',
                 'COUNT(p.id) AS total'
             )
-            ->setParameter('available', ProductStatus::Available->value)
-            ->setParameter('preOrder', ProductStatus::PreOrder->value)
-            ->setParameter('soldOut', ProductStatus::SoldOut->value)
+            ->setParameter('available', ProductStatus::AVAILABLE->value)
+            ->setParameter('preOrder', ProductStatus::PRE_ORDER->value)
+            ->setParameter('soldOut', ProductStatus::SOLD_OUT->value)
             ->getQuery()
             ->getSingleResult();
 

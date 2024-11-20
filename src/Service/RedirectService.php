@@ -31,11 +31,11 @@ class RedirectService
     {
         try {
             $session = $request->getSession();
-
-            return $session;
         } catch (SessionNotFoundException $e) {
             throw new \LogicException('Sessions are disabled. Enable them in "config/packages/framework.yaml".', 0, $e);
         }
+
+        return $session;
     }
 
     private function getFlashBag(SessionInterface $session): FlashBagInterface
