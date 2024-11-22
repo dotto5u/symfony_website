@@ -76,6 +76,8 @@ label:
     add: Add
     edit: Edit
     delete: Delete
+    add_to_cart: Add to cart
+    back: Back
 
     month:
         01: Jan

@@ -1,11 +1,15 @@
+## Utilisation
+
+(TODO)
+
+1. Intaller les dépendances
+2. Construire de CSS
+3. Mettre en place la base de données
+
+
 # Cours Symfony
 
 https://symfony-course.vercel.app/
-
-
-## Utilisation
-
-TODO
 
 
 ## PHP CS-Fixer Tool

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Order;
+use App\Enum\OrderStatus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
@@ -40,11 +41,13 @@ class OrderRepository extends ServiceEntityRepository
                 'SUM(oi.quantity * oi.productPrice) AS total'
             )
             ->join('o.orderItems', 'oi')
-            ->where('o.createdAt >= :startDate')
+            ->where('o.status != :canceled')
+            ->andWhere('o.createdAt >= :startDate')
             ->andWhere('o.createdAt < :endDate')
             ->groupBy('year, month')
             ->orderBy('year', 'ASC')
             ->addOrderBy('month', 'ASC')
+            ->setParameter('canceled', OrderStatus::CANCELED->value)
             ->setParameter('startDate', $startDate)
             ->setParameter('endDate', $endDate)
             ->getQuery()

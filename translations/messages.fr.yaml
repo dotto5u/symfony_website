@@ -76,6 +76,8 @@ label:
     add: Ajouter
     edit: Modifier
     delete: Supprimer
+    add_to_cart: Ajouter au panier
+    back: Retour
 
     month:
         01: Janv

@@ -21,7 +21,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 9000.00,
                 'description' => 'Un piano droit avec une sonorité exceptionnelle, parfait pour les musiciens de tous niveaux.',
                 'stock' => 5,
-                'status' => ProductStatus::Available,
+                'status' => ProductStatus::AVAILABLE,
                 'categories_ref' => ['category_1', 'category_5'],
                 'image_ref' => 'image_1'
             ],
@@ -30,7 +30,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 7500.00,
                 'description' => 'Le K300 est un piano droit reconnu pour sa fiabilité et sa qualité sonore supérieure.',
                 'stock' => 3,
-                'status' => ProductStatus::PreOrder,
+                'status' => ProductStatus::PRE_ORDER,
                 'categories_ref' => ['category_1'],
                 'image_ref' => 'image_2'
             ],
@@ -39,7 +39,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 15000.00,
                 'description' => 'Un piano à queue pour les professionnels, offrant un son riche et une qualité de fabrication inégalée.',
                 'stock' => 4,
-                'status' => ProductStatus::Available,
+                'status' => ProductStatus::AVAILABLE,
                 'categories_ref' => ['category_2', 'category_5'],
                 'image_ref' => 'image_3'
             ],
@@ -48,7 +48,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 1100.00,
                 'description' => 'Un piano numérique compact avec un toucher réaliste et une variété de sons.',
                 'stock' => 10,
-                'status' => ProductStatus::Available,
+                'status' => ProductStatus::AVAILABLE,
                 'categories_ref' => ['category_3'],
                 'image_ref' => 'image_4'
             ],
@@ -57,7 +57,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 2200.00,
                 'description' => 'Un piano numérique avec un son riche et une mécanique de touches immersive.',
                 'stock' => 0,
-                'status' => ProductStatus::SoldOut,
+                'status' => ProductStatus::SOLD_OUT,
                 'categories_ref' => ['category_3', 'category_5'],
                 'image_ref' => 'image_5'
             ],
@@ -66,7 +66,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 3000.00,
                 'description' => 'Un piano numérique haut de gamme pour les pianistes exigeants.',
                 'stock' => 4,
-                'status' => ProductStatus::Available,
+                'status' => ProductStatus::AVAILABLE,
                 'categories_ref' => ['category_3'],
                 'image_ref' => 'image_6'
             ],
@@ -75,7 +75,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 14000.00,
                 'description' => 'Un piano à queue de concert réputé pour sa clarté et sa richesse sonore.',
                 'stock' => 2,
-                'status' => ProductStatus::PreOrder,
+                'status' => ProductStatus::PRE_ORDER,
                 'categories_ref' => ['category_2', 'category_5'],
                 'image_ref' => 'image_7'
             ],
@@ -84,7 +84,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 2000.00,
                 'description' => 'Un piano de scène avec une large gamme de sons et une excellente jouabilité.',
                 'stock' => 6,
-                'status' => ProductStatus::Available,
+                'status' => ProductStatus::AVAILABLE,
                 'categories_ref' => ['category_4'],
                 'image_ref' => 'image_8'
             ],
@@ -93,7 +93,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 13000.00,
                 'description' => 'Un piano à queue élégant offrant une qualité sonore exceptionnelle pour les concerts.',
                 'stock' => 0,
-                'status' => ProductStatus::SoldOut,
+                'status' => ProductStatus::SOLD_OUT,
                 'categories_ref' => ['category_2'],
                 'image_ref' => 'image_9'
             ],
@@ -102,7 +102,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'price' => 50000.00,
                 'description' => 'L\'un des meilleurs piano sur le marché.',
                 'stock' => 1,
-                'status' => ProductStatus::Available,
+                'status' => ProductStatus::AVAILABLE,
                 'categories_ref' => ['category_5'],
                 'image_ref' => 'image_10'
             ],

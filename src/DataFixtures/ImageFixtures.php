@@ -14,7 +14,7 @@ class ImageFixtures extends Fixture
     {
         $imagesData = [
             [
-                'url' => 'yamaha-u1.jpg'
+                'url' => 'yamaha_u1.jpg'
             ],
             [
                 'url' => 'kawai-k300.jpg'
