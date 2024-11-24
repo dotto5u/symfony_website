@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block main %}
-    <main class="mx-6 my-12 sm:mx-36 sm:my-20">
-        <div class="max-w-3xl mx-auto p-8 rounded-md shadow-lg bg-fcp-blue-dark">
-            <h2 class="mb-4 text-center text-lg text-fcp-white font-semibold">{{ 'title.product.form' | trans }}</h2>
+    <main class="flex flex-col gap-y-5 mx-6 my-12 sm:mx-36 sm:my-20">
+        <div class="max-w-3xl w-full mx-auto p-8 rounded-md shadow-lg bg-fcp-blue-dark">
+            <h1 class="mb-4 text-center text-lg text-fcp-white font-semibold">
+                {{ isEdit ? 'title.product.edit' | trans : 'title.product.add' | trans }}
+            </h1>
 
             {{ form_start(form) }}
                 <div class="mb-4">
@@ -70,6 +72,10 @@
                     {{ form_widget(form.submit, {'attr': {'class': 'fcp-button'}}) }}
                 </div>
             {{ form_end(form) }}
+        </div>
+
+        <div class="flex justify-start max-w-3xl w-full mx-auto">
+            <span><a href="{{ path('app_admin_products_list') }}" class="fcp-button px-6 py-2 bg-slate-600 hover:bg-slate-700">{{ 'label.back' | trans }}</a></span>
         </div>
     </main>
 {% endblock %}

@@ -11,14 +11,22 @@
                 <img src="{{ asset('images/' ~ product.image.url ~ '') }}" alt="Image" class="w-full max-w-sm h-auto object-cover">
             </div>
             
-            <div class="flex flex-col justify-between gap-y-6">
+            <div class="flex flex-col justify-between gap-y-7">
                 <div class="flex flex-col gap-y-5">
                     <div>
                         <h2 class="text-2xl font-bold text-fcp-white">{{ product.name }}</h2>
                         <p class="text-sm text-gray-300 mx-1 mt-2">{{ product.description }}</p>
                     </div>
-                    <p class="text-xl font-semibold text-fcp-white">{{ product.price ~ ' €' }}</p>
+                    <div class="flex flex-col gap-y-1">
+                        <p class="text-sm text-fcp-white">{{ 'label.product.categories' | trans }} :</p>
+                        <div class="flex flex-wrap gap-4">
+                            {% for category in product.categories %}
+                                <div class="flex"><span class="py-1 px-2 rounded-md bg-gray-700 text-white text-sm">{{ category.name }}</span></div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
+
                 <div class="flex flex-col gap-y-3">
                     <p class="text-sm text-fcp-white">
                         {{ 'label.product.stock' | trans }} : {{ product.stock }}
@@ -27,6 +35,9 @@
                         {{ 'label.entity.status' | trans }} : {{ ('label.product.' ~ product.status.value) | trans }}
                     </p>
                 </div>
+
+                <p class="text-xl font-semibold text-fcp-white">{{ product.price ~ ' €' }}</p>
+
                 <div class="flex justify-start">
                     <span><a class="fcp-button px-8 py-2">{{ 'label.add_to_cart' | trans }}</a></span>
                 </div>
@@ -34,7 +45,7 @@
         </div>
 
         <div class="flex justify-start">
-            <span><a href="{{ path(backRouteName) }}" class="fcp-button px-6 py-2 bg-slate-700 hover:bg-slate-800">{{ 'label.back' | trans }}</a></span>
+            <span><a href="{{ path(backRouteName) }}" class="fcp-button px-6 py-2 bg-slate-600 hover:bg-slate-700">{{ 'label.back' | trans }}</a></span>
         </div>
     </main>
 {% endblock %}

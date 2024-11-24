@@ -73,8 +73,9 @@ class AdminController extends AbstractController
     public function productAdd(Request $request, EntityManagerInterface $em, RedirectService $redirectService): Response
     {   
         $product = new Product();
+        $isEdit = false;
 
-        $form = $this->createForm(ProductFormType::class, $product);
+        $form = $this->createForm(ProductFormType::class, $product, ['is_edit' => $isEdit]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -88,47 +89,85 @@ class AdminController extends AbstractController
             return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
         }
 
-        return $this->render('admin/products/add.html.twig', [
+        return $this->render('admin/products/form.html.twig', [
             'form' => $form,
+            'isEdit' => $isEdit,
         ]);
     }
 
     #[Route('/admin/products/{id}/edit', name: 'app_admin_products_edit')]
-    public function productEdit(int $id, Request $request, ProductRepository $productRepository, RedirectService $redirectService): Response
+    public function productEdit(int $id, Request $request, EntityManagerInterface $em, ProductRepository $productRepository, RedirectService $redirectService): Response
     {
+        $type = '';
+        $message = '';
+        $fallbackRoute = 'app_admin_products_list';
+
         $product = $productRepository->getById($id);
 
         if ($product === null) {
             $type = 'error';
             $message = 'flash.product.not_found';
-            $fallbackRoute = 'app_admin_products_list';
 
             return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
         }
 
-        return $this->render('admin/products/edit.html.twig', [
-            'product' => $product,
+        $isEdit = true;
+
+        $form = $this->createForm(ProductFormType::class, $product, ['is_edit' => $isEdit]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($product);
+            $em->flush();
+
+            $type = 'success';
+            $message = 'flash.product.updated';
+     
+            return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
+        }
+
+        return $this->render('admin/products/form.html.twig', [
+            'form' => $form,
+            'isEdit' => $isEdit,
         ]);
     }
 
     #[Route('/admin/products/{id}/delete', name: 'app_admin_products_delete')]
-    public function productDelete(int $id, Request $request, ProductRepository $productRepository, RedirectService $redirectService): Response
+    public function productDelete(int $id, Request $request, EntityManagerInterface $em, ProductRepository $productRepository, RedirectService $redirectService): Response
     {   
-        $product = $productRepository->getById($id);
-
-        $type = 'error';
+        $type = '';
         $message = '';
         $fallbackRoute = 'app_admin_products_list';
 
+        $product = $productRepository->getById($id);
+
         if ($product === null) {
+            $type = 'error';
             $message = 'flash.product.not_found';
 
             return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
         }
 
-        // TODO
+        if (!$product->getOrderItems()->isEmpty()) {
+            $type = 'error';
+            $message = 'flash.product.cannot_be_deleted_due_to_order';
+            
+            return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
+        }
 
-        $message = 'flash.product.cannot_be_deleted';
+        try {
+            $product->removeAllCategories();
+            $em->flush();
+            
+            $em->remove($product);
+            $em->flush();
+
+            $type = 'success';
+            $message = 'flash.product.deleted';
+        } catch (\Exception) {
+            $type = 'error';
+            $message = 'flash.product.cannot_be_deleted';
+        }
 
         return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
     }

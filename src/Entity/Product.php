@@ -71,7 +71,7 @@ class Product
     /**
      * @var Collection<int, OrderItem>
      */
-    #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'product', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'product')]
     private Collection $orderItems;
 
     #[ORM\ManyToOne(targetEntity: Image::class, inversedBy: 'products')]
@@ -173,6 +173,16 @@ class Product
 
         return $this;
     }
+
+    public function removeAllCategories(): static
+    {
+        foreach ($this->categories as $category) {
+            $this->removeCategory($category);
+        }
+
+        return $this;
+    }
+
 
     /**
      * @return Collection<int, OrderItem>
