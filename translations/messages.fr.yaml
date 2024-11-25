@@ -33,6 +33,8 @@ table:
 # title
 title:
     login: Connectez-vous à votre compte
+    home: 
+        main: Des pianos pour toutes les mélodies
     product:
         list: Liste des produits
         form: Ajouter un produit
@@ -45,7 +47,13 @@ title:
 
 # label
 label:
-    entity:
+    login: 
+        email: Email
+        password: Mot de passe
+        submit: Se connecter
+    home: 
+        main: Chaque piano est une œuvre de qualité, comme façonnés dans les cieux. Essayez les pianos Forecast !
+    entity: 
         price: Prix
         status: Status
     user: 
@@ -67,11 +75,8 @@ label:
         pre_order: En précommande
         sold_out: En rupture
         image: Image
-    login:
-        email: Email
-        password: Mot de passe
-        submit: Se connecter
     
+    discover: Nos produits
     view: Voir
     add: Ajouter
     edit: Modifier

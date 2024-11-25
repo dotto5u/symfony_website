@@ -33,6 +33,8 @@ table:
 # title
 title:
     login: Login to your account
+    home: 
+        main: Pianos for all tunes
     product:
         list: List of products
         form: Add a product
@@ -45,19 +47,25 @@ title:
 
 # label
 label:
+    login:
+        email: Email
+        password: Password
+        submit: Login
+    home:
+        main: Each piano is a work of quality, as if made in heavens. Try Forecast pianos!
     entity:
         price: Price
         status: Status
-    user: 
+    user:
         users: Users
-    order: 
+    order:
         orders: Orders
         reference: Reference
         in_preparation: In preparation
         shipped: Shipped
         delivered: Delivered
         canceled: Canceled
-    product: 
+    product:
         products: Products
         name: Name
         description: Description
@@ -67,11 +75,8 @@ label:
         pre_order: Pre order
         sold_out: Sold out
         image: Image
-    login:
-        email: Email
-        password: Password
-        submit: Login
 
+    discover: Our products
     view: View
     add: Add
     edit: Edit
