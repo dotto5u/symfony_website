@@ -1,0 +1,27 @@
+<div {{ attributes }} class="flex flex-col gap-y-10">
+    <div>
+        <input id="product_search" type="text" placeholder="{{ 'placeholder.product.search' | trans }}" data-model="debounce(500)|search" class="fcp-input"/>
+    </div>
+
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {% for product in this.products %}
+            <li class="fcp-card p-0 rounded-md flex flex-col gap-y-5">
+                <a href="{{ path('app_products_view', { 'id': product.id }) }}" class="flex justify-center items-center h-full">
+                    <img src="{{ asset('images/' ~ product.image.url ~ '') }}" alt="Image" class="w-full h-full object-cover">
+                </a>
+
+                <div class="flex flex-col gap-y-7 px-8 pb-5">
+                    <div class="flex flex-col gap-y-3">
+                        <h2 class="text-xl font-bold text-fcp-white">{{ product.name }}</h2>
+                        <p class="text-lg font-semibold text-fcp-white">{{ product.price ~ ' €' }}</p>  
+                    </div>
+                    <p class="text-sm text-fcp-white">{{ ('label.product.' ~ product.status.value) | trans }}</p>
+                </div>
+            </li>
+        {% else %}
+            <li class="flex justify-start mx-2">
+                <p class="font-semibold text-fcp-white">Aucun produit trouvé</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

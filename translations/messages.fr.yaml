@@ -37,7 +37,8 @@ title:
     home: 
         main: Des pianos pour toutes les mélodies
     product:
-        list: Liste des produits
+        list: Nos produits
+        admin: Liste des produits
         add: Ajouter un produit
         edit: Modifier un produit
     dashboard:
@@ -107,6 +108,7 @@ placeholder:
         description: Entrer la description du produit
         stock: Entrer le stock du produit
         image: Sélectionnez une image
+        search: Rechercher un produit...
     login:
         email: Entrez votre mot de passe
         password: Entrez votre email

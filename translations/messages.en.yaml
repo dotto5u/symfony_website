@@ -37,7 +37,8 @@ title:
     home: 
         main: Pianos for all tunes
     product:
-        list: List of products
+        list: Our products
+        admin: List of products
         add: Add a product
         edit: Edit a product
     dashboard:
@@ -107,6 +108,7 @@ placeholder:
         description: Enter product description
         stock: Enter product stock
         image: Select an image
+        search: Search for a product...
     login:
         email: Enter your email
         password: Enter your password

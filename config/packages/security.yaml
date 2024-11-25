@@ -38,6 +38,6 @@ security:
         - { path: ^/login$, allow_if: "!is_authenticated()" }
         - { path: ^/logout$, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/home$, roles: PUBLIC_ACCESS }
-        - { path: ^/products$, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/cart$, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/products, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/cart, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }

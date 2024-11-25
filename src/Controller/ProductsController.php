@@ -14,8 +14,6 @@ class ProductsController extends AbstractController
     #[Route('/products/list', name: 'app_products_list')]
     public function list(): Response
     {
-        // TODO
-
         return $this->render('products/list.html.twig');
     }
 
@@ -26,10 +24,10 @@ class ProductsController extends AbstractController
 
         if ($product === null) {
             $type = 'error';
-            $message = 'flash.product_not_found';
+            $message = 'flash.product.not_found';
             $fallbackRoute = 'app_products_list';
 
-            $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
+            return $redirectService->redirectWithFlash($request, $type, $message, $fallbackRoute);
         }
 
         $referer = $request->headers->get('referer');
