@@ -20,6 +20,8 @@ class ProductFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $isEdit = $options['is_edit'] ?? false;
+
         $builder
             ->add('name', TextType::class, [
                 'label' => 'label.product.name',
@@ -51,11 +53,10 @@ class ProductFormType extends AbstractType
             ])
             ->add('status', ChoiceType::class, [
                 'choices' => [
+                    'label.product.pre_order' => ProductStatus::PRE_ORDER,
                     'label.product.available' => ProductStatus::AVAILABLE,
                     'label.product.sold_out' => ProductStatus::SOLD_OUT,
-                    'label.product.pre_order' => ProductStatus::PRE_ORDER,
                 ],
-                'data' => ProductStatus::PRE_ORDER,
                 'label' => 'label.entity.status',
                 'attr' => [
                     'autocomplete' => 'status',
@@ -81,7 +82,7 @@ class ProductFormType extends AbstractType
                 ],
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'label.add',
+                'label' => $isEdit ? 'label.edit' : 'label.add',
             ]);
     }
 
@@ -94,6 +95,7 @@ class ProductFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Product::class,
+            'is_edit' => false,
         ]);
     }
 }

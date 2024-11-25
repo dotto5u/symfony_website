@@ -9,8 +9,9 @@ flash:
     products:
         not_found: Produit introuvable
         cannot_be_deleted: Le produit ne peut pas être supprimé
+        cannot_be_deleted_due_to_order: Le produit ne peut pas être supprimé car il fait partie d'une commande
         added: Le produit a été ajouté avec succès
-        modified: Le produit a été modifié avec succès
+        updated: Le produit a été modifié avec succès
         deleted: Le produit a été supprimé avec succès
 
 # navbar
@@ -37,7 +38,8 @@ title:
         main: Des pianos pour toutes les mélodies
     product:
         list: Liste des produits
-        form: Ajouter un produit
+        add: Ajouter un produit
+        edit: Modifier un produit
     dashboard:
         welcome: Bienvenue, %name% !
         product_per_category: Nombre de produits par catégorie

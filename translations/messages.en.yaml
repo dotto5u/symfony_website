@@ -9,8 +9,9 @@ flash:
     product:
         not_found: Product not found
         cannot_be_deleted: The product cannot be deleted
+        cannot_be_deleted_due_to_order: The product cannot be deleted because it is part of an order
         added: The product has been successfully added
-        modified: The product has been successfully modified
+        updated: The product has been successfully updated
         deleted: The product has been successfully deleted
 
 # navbar
@@ -37,7 +38,8 @@ title:
         main: Pianos for all tunes
     product:
         list: List of products
-        form: Add a product
+        add: Add a product
+        edit: Edit a product
     dashboard:
         welcome: Welcome back, %name% !
         product_per_category: Number of products per category
