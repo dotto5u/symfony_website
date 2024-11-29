@@ -36,6 +36,9 @@ title:
     login: Connectez-vous à votre compte
     home: 
         main: Des pianos pour toutes les mélodies
+        quality: Des pianos d'exception
+        models: Trouvez le piano qui vous correspond
+        ux: Achetez en toute sérénité
     product:
         list: Nos produits
         admin: Liste des produits
@@ -56,6 +59,9 @@ label:
         submit: Se connecter
     home: 
         main: Chaque piano est une œuvre de qualité, comme façonnés dans les cieux. Essayez les pianos Forecast !
+        quality: "Nos pianos sont conçus avec des matériaux haut de gamme Chaque instrument est soigneusement testé pour garantir un son riche et une durabilité inégalée"
+        models: "Que vous soyez débutant ou pianiste confirmé, nous proposons une large gamme de modèles : pianos numériques, droits ou à queue. Explorez nos collections pour découvrir celui qui répond à vos envies et à votre budget"
+        ux: "Profitez de notre expertise pour vous guider dans votre choix, d'un service après-vente réactif, et d'une livraison rapide et sécurisée. Votre satisfaction est notre priorité"
     entity: 
         price: Prix
         status: Status

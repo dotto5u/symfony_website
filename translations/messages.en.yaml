@@ -36,6 +36,9 @@ title:
     login: Login to your account
     home: 
         main: Pianos for all tunes
+        quality: Outstanding pianos
+        models: Find the piano that suits you
+        ux: Buy with confidence
     product:
         list: Our products
         admin: List of products
@@ -56,6 +59,9 @@ label:
         submit: Login
     home:
         main: Each piano is a work of quality, as if made in heavens. Try Forecast pianos!
+        quality: "Our pianos are crafted with premium materials. Each instrument is meticulously tested to ensure a rich sound and unmatched durability"
+        models: "Whether you're a beginner or an experienced pianist, we offer a wide range of models: digital, upright or grand pianos. Explore our collections to discover the one that's right for you and your budget"
+        ux: "Take advantage of our expertise to guide you in your choice, responsive after-sales service, and fast, secure delivery. Your satisfaction is our priority"
     entity:
         price: Price
         status: Status

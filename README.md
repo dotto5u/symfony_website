@@ -1,10 +1,10 @@
 ## Utilisation
 
-(TODO)
-
-1. Intaller les dépendances
-2. Construire de CSS
-3. Mettre en place la base de données
+1. Intaller les dépendances : `composer install`
+2. Créer la base de données (changer le DATABASE_URL dans le .env si besoin) : `php bin/console doctrine:database:create`
+3. Lancer les migrations : `php bin/console doctrine:migration:migrate`
+4. importer les fixtures : `php bin/console doctrine:fixtures:load`
+5. Construire de CSS `php bin/console tailwind:build`
 
 
 # Cours Symfony
