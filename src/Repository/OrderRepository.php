@@ -18,6 +18,15 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
+    public function getAll(bool $asQuery = false): array|Query
+    {
+        $query = $this->createQueryBuilder('o')
+            ->orderBy('o.reference', 'ASC')
+            ->getQuery();
+
+        return $asQuery ? $query : $query->getResult();
+    }
+
     public function getLastFiveOrders(): array
     {
         $result = $this->createQueryBuilder('o')

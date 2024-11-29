@@ -39,6 +39,10 @@ title:
         quality: Outstanding pianos
         models: Find the piano that suits you
         ux: Buy with confidence
+    user:
+        admin: List of users
+    order:
+        admin: List of orders
     product:
         list: Our products
         admin: List of products
@@ -67,6 +71,9 @@ label:
         status: Status
     user:
         users: Users
+        firstname: First name
+        lastname: Last name
+        email: Email
     order:
         orders: Orders
         reference: Reference

@@ -6,6 +6,24 @@
 
 {% block main %}
     <main class="mx-6 my-12 sm:mx-36 sm:my-20">
-        <h1 class="text-fcp-white text-2xl">User list page !</h1>
+        <div class="fcp-card">
+            <h2 class="text-xl text-fcp-white">{{ 'title.user.admin' | trans }}</h2>
+            
+            <div class="flex flex-col gap-5">
+                {% set userHeader = [
+                    { label: 'label.user.firstname', center: false },
+                    { label: 'label.user.lastname', center: false },
+                    { label: 'label.user.email', center: false },
+                ] %}
+
+                {% set userBody = userPagination | map(user => [
+                    { content: user.firstName, center: false },
+                    { content: user.lastName, center: false },
+                    { content: user.email, center: false },
+                ]) %}
+
+                {% include 'partials/_table.html.twig' with { header: userHeader, body: userBody, pagination: userPagination } %}
+            </div>
+        </div>
     </main>
 {% endblock %}

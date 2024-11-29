@@ -39,6 +39,10 @@ title:
         quality: Des pianos d'exception
         models: Trouvez le piano qui vous correspond
         ux: Achetez en toute sérénité
+    user:
+        admin: Liste des utilisateurs
+    order:
+        admin: Liste des commandes
     product:
         list: Nos produits
         admin: Liste des produits
@@ -67,6 +71,9 @@ label:
         status: Status
     user: 
         users: Utilisateurs
+        firstname: Nom
+        lastname: Prénom
+        email: Email
     order: 
         orders: Commandes
         reference: Référence

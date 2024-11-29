@@ -41,20 +41,22 @@ class AdminController extends AbstractController
     #[Route('/admin/users/list', name: 'app_admin_users_list')]
     public function userList(Request $request, UserRepository $userRepository, PaginationService $paginationService): Response 
     {
-        // TODO
+        $query = $userRepository->getAll(true);
+        $pagination = $paginationService->paginate($request, $query, 5);
 
         return $this->render('admin/users/list.html.twig', [
-            
+            'userPagination' => $pagination,
         ]);
     }
 
     #[Route('/admin/orders/list', name: 'app_admin_orders_list')]
     public function orderList(Request $request, OrderRepository $orderRepository, PaginationService $paginationService): Response 
     {
-        // TODO
+        $query = $orderRepository->getAll(true);
+        $pagination = $paginationService->paginate($request, $query, 5);
 
         return $this->render('admin/orders/list.html.twig', [
-            
+            'orderPagination' => $pagination,
         ]);
     }
 

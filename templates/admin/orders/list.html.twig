@@ -6,6 +6,26 @@
 
 {% block main %}
     <main class="mx-6 my-12 sm:mx-36 sm:my-20">
-        <h1 class="text-fcp-white text-2xl">Order list page !</h1>
+        <div class="fcp-card">
+            <h2 class="text-xl text-fcp-white">{{ 'title.order.admin' | trans }}</h2>
+            
+            <div class="flex flex-col gap-5">
+                {% set orderHeader = [
+                    { label: 'label.order.reference', center: false },
+                    { label: 'table.header.created_at', center: false },
+                    { label: 'table.header.order_by', center: false },
+                    { label: 'label.entity.status', center: false },
+                ] %}
+
+                {% set orderBody = orderPagination | map(order => [
+                    { content: order.reference, center: false },
+                    { content: order.createdAt | date('d/m/Y'), center: false },
+                    { content: order.user.fullName, center: false },
+                    { content: ('label.order.' ~ order.status.value) | trans, center: false },
+                ]) %}
+
+                {% include 'partials/_table.html.twig' with { header: orderHeader, body: orderBody, pagination: orderPagination } %}
+            </div>
+        </div>
     </main>
 {% endblock %}
