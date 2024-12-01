@@ -48,6 +48,7 @@ title:
         summary: Summary
     credit_card:
         main: My credit cards
+        add: Add a credit card
     user:
         admin: List of users
     order:
@@ -86,6 +87,12 @@ label:
         free: free
         confirm: Confirm my cart and pay
         credit_cards: My credit cards
+    credit_card:
+        empty: You don't have any registered credit cards
+        add: Add a new credit card
+        number: Credit Card Number
+        expiration_date: Expiration Date
+        cvv: CVV Code
     entity:
         price: Price
         status: Status
@@ -121,6 +128,7 @@ label:
     add_to_cart: Add to cart
     unavailable: Unavailable
     back: Back
+    cancel: Cancel
 
     month:
         01: Jan
@@ -147,3 +155,7 @@ placeholder:
     login:
         email: Enter your email
         password: Enter your password
+    credit_card:
+        number: Enter the credit card number
+        expiration_date: MM/YYYY
+        cvv: Enter the CVV code

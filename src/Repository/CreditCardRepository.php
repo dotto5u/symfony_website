@@ -16,28 +16,13 @@ class CreditCardRepository extends ServiceEntityRepository
         parent::__construct($registry, CreditCard::class);
     }
 
-//    /**
-//     * @return CreditCard[] Returns an array of CreditCard objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?CreditCard
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function getByUser(int $userId): array
+    {
+        return $this->createQueryBuilder('cc')
+            ->innerJoin('cc.users', 'u')
+            ->andWhere('u.id = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
 }

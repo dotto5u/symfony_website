@@ -2,7 +2,7 @@
 access_denied:
     default: Accès refusé
     login: Vous êtes déjà connecté
-    admin: Vous n\avez pas l\autorisation d\accéder à cette page
+    admin: Vous n'avez pas l'autorisation d'accéder à cette page
 
 # flash
 flash:
@@ -15,7 +15,7 @@ flash:
         deleted: Le produit a été supprimé avec succès
     cart:
         payment_user_required: Vous devez être connecté pour pouvoir valider et payer votre panier
-        stock_insufficient: Le stock d\'un des produits est insuffisant
+        stock_insufficient: Le stock d'un des produits est insuffisant
         payment_processed: Le paiement a été effectué avec succès
 
 # navbar
@@ -48,6 +48,7 @@ title:
         summary: Récapitulatif
     credit_card:
         main: Mes cartes bancaires
+        add: Ajouter une cartes bancaire
     user:
         admin: Liste des utilisateurs
     order:
@@ -86,6 +87,12 @@ label:
         free: offert
         confirm: Confirmer mon panier et payer
         credit_cards: Mes cartes bancaires
+    credit_card:
+        empty: Vous n'avez pas de carte bancaire enregistrée
+        add: Ajouter une nouvelle carte bancaire
+        number: Numéro de carte
+        expiration_date: Date d'expiration
+        cvv: Code CVV
     entity: 
         price: Prix
         status: Status
@@ -121,6 +128,7 @@ label:
     add_to_cart: Ajouter au panier
     unavailable: Indisponible
     back: Retour
+    cancel: Annuler
 
     month:
         01: Janv
@@ -145,5 +153,9 @@ placeholder:
         image: Sélectionnez une image
         search: Rechercher un produit...
     login:
-        email: Entrez votre mot de passe
-        password: Entrez votre email
+        email: Entrez votre email
+        password: Entrez votre mot de passe
+    credit_card:
+        number: Entrez le numéro de carte
+        expiration_date: MM/AAAA
+        cvv: Entrez le code CVV

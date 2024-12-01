@@ -27,3 +27,15 @@ error:
             at_least_one: You must select at least one category
         image:
             not_null: An image must be selected
+    credit_card:
+        number:
+            not_blank: The number must not be blank
+            numeric: The credit card number must be numeric
+            length: The number must be exactly 16 characters
+        expiration_date:
+            not_null: The expiration date must not be blank
+            greater_today: The expiration date must be greater than today's date
+        cvv:
+            not_blank: The CVV code must not be blank
+            numeric: The CVV must be numeric
+            length: The CVV code must be exactly 3 characters
