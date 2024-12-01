@@ -21,7 +21,8 @@ use App\Form\ProductFormType;
 class AdminController extends AbstractController
 {
     #[Route('/admin/dashboard', name: 'app_admin_dashboard')]
-    public function dashboard(ProductRepository $productRepository, OrderRepository $orderRepository, ChartService $chartService, DashboardChartService $dashboardChartService, TranslatorInterface $translator): Response {
+    public function dashboard(ProductRepository $productRepository, OrderRepository $orderRepository, ChartService $chartService, DashboardChartService $dashboardChartService, TranslatorInterface $translator): Response 
+    {
         $productCount = $productRepository->getProductCountByCategory();
         $lastFiveOrders = $orderRepository->getLastFiveOrders();
         $availabilityRatio = $productRepository->getAvailabilityRatio();

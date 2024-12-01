@@ -13,6 +13,10 @@ flash:
         added: The product has been successfully added
         updated: The product has been successfully updated
         deleted: The product has been successfully deleted
+    cart:
+        payment_user_required: You must be logged in to validate and pay for your cart
+        stock_insufficient: The stock of one of the products is insufficient
+        payment_processed: The payment was successfully processed
 
 # navbar
 nav:
@@ -39,6 +43,9 @@ title:
         quality: Outstanding pianos
         models: Find the piano that suits you
         ux: Buy with confidence
+    cart:
+        main: My cart
+        summary: Summary
     user:
         admin: List of users
     order:
@@ -66,6 +73,17 @@ label:
         quality: "Our pianos are crafted with premium materials. Each instrument is meticulously tested to ensure a rich sound and unmatched durability"
         models: "Whether you're a beginner or an experienced pianist, we offer a wide range of models: digital, upright or grand pianos. Explore our collections to discover the one that's right for you and your budget"
         ux: "Take advantage of our expertise to guide you in your choice, responsive after-sales service, and fast, secure delivery. Your satisfaction is our priority"
+    cart:
+        empty: Your cart is empty
+        shopping: Continue shopping
+        charges: Excluding delivery charges
+        vendor: Sold by Forecast Piano
+        in_store_pickup: In-store pickup
+        relay_delivery: Delivery to a relay point
+        home_delivery: Home delivery
+        free: free
+        confirm: Confirm my cart and pay
+        credit_cards: My credit cards
     entity:
         price: Price
         status: Status
@@ -91,6 +109,7 @@ label:
         pre_order: Pre order
         sold_out: Sold out
         image: Image
+        not_found: No products found
 
     discover: Our products
     view: View
@@ -98,6 +117,7 @@ label:
     edit: Edit
     delete: Delete
     add_to_cart: Add to cart
+    unavailable: Unavailable
     back: Back
 
     month:

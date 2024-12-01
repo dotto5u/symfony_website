@@ -8,7 +8,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent]
-final class ProductSearch
+final class ProductList
 {
     use DefaultActionTrait;
 

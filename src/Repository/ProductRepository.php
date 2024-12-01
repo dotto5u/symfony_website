@@ -31,6 +31,15 @@ class ProductRepository extends ServiceEntityRepository
         return $this->find($id);
     }
 
+    public function getByIds(array $ids): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.id IN (:ids)')
+            ->setParameter('ids', $ids)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function getBySearch(string $search): array
     {
         return $this->createQueryBuilder('p')

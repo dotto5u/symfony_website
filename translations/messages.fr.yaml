@@ -13,6 +13,10 @@ flash:
         added: Le produit a été ajouté avec succès
         updated: Le produit a été modifié avec succès
         deleted: Le produit a été supprimé avec succès
+    cart:
+        payment_user_required: Vous devez être connecté pour pouvoir valider et payer votre panier
+        stock_insufficient: Le stock d\'un des produits est insuffisant
+        payment_processed: Le paiement a été effectué avec succès
 
 # navbar
 nav:
@@ -39,6 +43,9 @@ title:
         quality: Des pianos d'exception
         models: Trouvez le piano qui vous correspond
         ux: Achetez en toute sérénité
+    cart:
+        main: Mon panier
+        summary: Récapitulatif
     user:
         admin: Liste des utilisateurs
     order:
@@ -66,6 +73,17 @@ label:
         quality: "Nos pianos sont conçus avec des matériaux haut de gamme Chaque instrument est soigneusement testé pour garantir un son riche et une durabilité inégalée"
         models: "Que vous soyez débutant ou pianiste confirmé, nous proposons une large gamme de modèles : pianos numériques, droits ou à queue. Explorez nos collections pour découvrir celui qui répond à vos envies et à votre budget"
         ux: "Profitez de notre expertise pour vous guider dans votre choix, d'un service après-vente réactif, et d'une livraison rapide et sécurisée. Votre satisfaction est notre priorité"
+    cart:
+        empty: Votre panier est vide
+        shopping: Poursuivre mes achats
+        charges: Hors frais de livraison
+        vendor: Vendu par Forecast Piano
+        in_store_pickup: Retrait en magasin
+        relay_delivery: Livraison en point de retrait
+        home_delivery: Livraison à domicile
+        free: offert
+        confirm: Confirmer mon panier et payer
+        credit_cards: Mes cartes bancaires
     entity: 
         price: Prix
         status: Status
@@ -91,6 +109,7 @@ label:
         pre_order: En précommande
         sold_out: En rupture
         image: Image
+        not_found: Aucun produit trouvé
     
     discover: Nos produits
     view: Voir
@@ -98,6 +117,7 @@ label:
     edit: Modifier
     delete: Supprimer
     add_to_cart: Ajouter au panier
+    unavailable: Indisponible
     back: Retour
 
     month:

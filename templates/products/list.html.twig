@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
-    {% include 'partials/_navbar.html.twig' %}
+    {{ component('Navbar') }}
 {% endblock %}
 
 {% block main %}
     <main class="flex flex-col gap-y-10 mx-6 my-12 sm:mx-36 sm:my-20">
         <h1 class="text-fcp-white text-3xl">{{ 'title.product.list' | trans }}</h1>
 
-        {{ component('ProductSearch') }}
+        {{ component('ProductList') }}
     </main>
 {% endblock %}

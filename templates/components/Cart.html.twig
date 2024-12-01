@@ -1,0 +1,95 @@
+<div {{ attributes.defaults(stimulus_controller('cart')) }}>
+    {% if this.cart != [] %}
+        <div class="flex flex-col gap-y-5 lg:flex-row lg:gap-x-14">
+            <ul class="grid grid-cols-1 w-full h-1/3 min-h-20 gap-6 xl:grid-cols-2 xl:w-2/3">
+                {% for product in this.cart %}
+                    <li class="fcp-card flex flex-row w-full p-4 gap-x-4 bg-fcp-blue-dark">
+                        <a href="{{ path('app_products_view', { 'id': product.id }) }}" class="flex flex-shrink-0 justify-center items-center">
+                            <img src="{{ asset('images/' ~ product.imageUrl ~ '') }}" alt="Image" class="w-32 h-32 object-cover rounded">
+                        </a>
+
+                        <div class="flex flex-col gap-y-6">
+                            <div class="flex flex-col gap-y-2">
+                                <h2 class="text-lg font-bold text-fcp-white">
+                                    {{ product.name }}
+                                </h2>
+
+                                <p class="text-md font-semibold text-fcp-white">
+                                    {{ product.price ~ ' €' }}
+                                </p>
+                            </div>
+
+                            <div class="flex flex-row flex-wrap items-center mx-1 gap-4">
+                                <span>
+                                    <select data-action="change->cart#updateProductQuantity" id="{{ product.id }}" class="fcp-input">
+                                        {% set maxToCart = product.stock > this.maxCartQuantity ? this.maxCartQuantity : product.stock %}
+                                        {% for i in 1..maxToCart %}
+                                            <option value="{{ i }}" {% if i == product.quantity %}selected{% endif %}>
+                                                {{ i }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </span>
+                                
+                                <span>
+                                    <a data-action="live#action" data-live-action-param="updateCart" data-live-id-param="{{ product.id }}" data-live-quantity-param="{{ 0 }}" class="fcp-button px-3 py-1 bg-error-dark hover:bg-red-800">
+                                        {{ 'label.delete' | trans }}
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="w-full xl:w-1/3">
+                <div class="fcp-card text-fcp-white">
+                    <h2 class="text-lg font-bold">{{ 'title.cart.summary' | trans }}</h2>
+                    
+                    <hr class="my-3 border-gray-300">
+
+                    <div class="text-lg font-bold">
+                        <p class="flex justify-between">
+                            <span>{{ 'table.header.total' | trans }}:</span>
+                            <span>{{ (this.totalPrice) ~ ' €' }}</span>
+                        </p>
+                        <p class="text-sm text-gray-600">{{ 'label.cart.charges' | trans }}</p>
+                    </div>
+
+                    <hr class="my-3 border-gray-300">
+
+                    <div class="text-sm">
+                        <p class="flex justify-between mb-2">
+                            <span>{{ 'label.cart.vendor' | trans }}</span>
+                        </p>
+                        <p class="flex justify-between">
+                            <span>{{ 'label.cart.in_store_pickup' | trans }}:</span>
+                            <span class="font-bold text-success-dark">{{ 'label.cart.free' | trans }}</span>
+                        </p>
+                        <p class="flex justify-between">
+                            <span>{{ 'label.cart.relay_delivery' | trans }}:</span>
+                            <span class="font-bold text-success-dark">{{ 'label.cart.free' | trans }}</span>
+                        </p>
+                        <p class="flex justify-between">
+                            <span>{{ 'label.cart.home_delivery' | trans }}:</span>
+                            <span class="font-bold text-success-dark">{{ 'label.cart.free' | trans }}</span>
+                        </p>
+                    </div>
+                    
+                    <div class="mt-5 flex justify-start">
+                        <span><a data-action="live#action" data-live-action-param="payCart" class="px-7 fcp-button">{{ 'label.cart.confirm' | trans }}</a></span>
+                    </div>
+                </div>
+
+                <div class="mt-7 flex justify-center">
+                    <span><a href="{{ path('app_home') }}" class="px-7 bg-slate-600 hover:bg-slate-700 fcp-button">{{ 'label.cart.credit_cards' | trans }}</a></span>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="flex flex-col items-center mt-10 gap-y-5 text-fcp-white">
+            <p class="text-xl">{{ 'label.cart.empty' | trans }}</p>
+            <a href="{{ path('app_products_list') }}" class="text-lg font-semibold underline">{{ 'label.cart.shopping' | trans }}</a>
+        </div>
+    {% endif %}
+</div>

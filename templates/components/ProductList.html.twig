@@ -1,6 +1,6 @@
 <div {{ attributes }} class="flex flex-col gap-y-10">
     <div>
-        <input id="product_search" type="text" placeholder="{{ 'placeholder.product.search' | trans }}" data-model="debounce(500)|search" class="fcp-input"/>
+        <input type="text" placeholder="{{ 'placeholder.product.search' | trans }}" data-model="debounce(500)|search" class="fcp-input"/>
     </div>
 
     <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -20,7 +20,7 @@
             </li>
         {% else %}
             <li class="flex justify-start mx-2">
-                <p class="font-semibold text-fcp-white">Aucun produit trouvé</p>
+                <p class="font-semibold text-fcp-white">{{ 'label.product.not_found' | trans }}</p>
             </li>
         {% endfor %}
     </ul>
