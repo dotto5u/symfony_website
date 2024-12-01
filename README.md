@@ -7,6 +7,7 @@
 4. Importer les fixtures `php bin/console doctrine:fixtures:load`
 5. Construire de CSS `php bin/console tailwind:build`
 
+
 <u>Identifiants administrateur</u>
 
 email : dotto.matis@gmail.com  
@@ -23,10 +24,3 @@ password : maaroufi123
 
 email : manick.luc@gmail.com  
 password : manick123
-
-
-## PHP CS-Fixer Tool
-
-Pour utiliser l'outil PHP CS Fixer, il faut lancer la commande suivante : 
-
-`php tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src`

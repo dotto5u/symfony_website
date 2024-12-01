@@ -8,12 +8,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DashboardChartService
 {
-    public function __construct(private ChartService $chartService, private TranslatorInterface $translator) {}
+    public function __construct(private ChartService $chartService, private TranslatorInterface $translator)
+    {
+    }
 
     public function preparePieChart(array $availabilityRatio): Chart
     {
         $labels = array_keys($availabilityRatio);
-        $translatedLabels = array_map(fn($label) => $this->translator->trans('label.product.'.$label), $labels);
+        $translatedLabels = array_map(fn ($label) => $this->translator->trans('label.product.'.$label), $labels);
         $data = array_values($availabilityRatio);
         $backgroundColors = ['#2E7D32', '#0288D1', '#C62828'];
 

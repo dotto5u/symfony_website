@@ -15,7 +15,9 @@ final class ProductList
     #[LiveProp(writable: true)]
     public string $search = '';
 
-    public function __construct(private ProductRepository $productRepository) {}
+    public function __construct(private ProductRepository $productRepository)
+    {
+    }
 
     public function getProducts(): array
     {

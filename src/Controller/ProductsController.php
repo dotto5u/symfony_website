@@ -36,8 +36,8 @@ class ProductsController extends AbstractController
             $referer && str_contains($referer, '/admin') => 'app_admin_products_list',
             $referer && str_contains($referer, '/cart') => 'app_cart',
             default => 'app_products_list',
-        }; 
-    
+        };
+
         return $this->render('products/view.html.twig', [
             'product' => $product,
             'backRouteName' => $backRouteName,

@@ -19,7 +19,7 @@ class CreditCardFixtures extends Fixture implements DependentFixtureInterface
                 'number' => '4111111111111111',
                 'expiration_date' => new \DateTime('2026-12-01'),
                 'cvv' => '123',
-                'user_ref' =>'user_4',
+                'user_ref' => 'user_4',
             ],
         ];
 

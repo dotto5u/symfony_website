@@ -19,7 +19,8 @@ use App\Repository\UserRepository;
 #[AsLiveComponent]
 final class CreditCardPage extends AbstractController
 {
-    use DefaultActionTrait, ValidatableComponentTrait;
+    use DefaultActionTrait;
+    use ValidatableComponentTrait;
 
     #[LiveProp]
     public bool $showCreditCardForm;
@@ -46,8 +47,10 @@ final class CreditCardPage extends AbstractController
     #[Length(min: 3, max: 3, exactMessage: "error.credit_card.cvv.length")]
     public string $cvv = '';
 
-    public function __construct(private CreditCardRepository $creditCardRepository) {}
-    
+    public function __construct(private CreditCardRepository $creditCardRepository)
+    {
+    }
+
     public function mount(): void
     {
         $this->showCreditCardForm = false;
@@ -65,7 +68,7 @@ final class CreditCardPage extends AbstractController
     {
         $creditCards = $this->creditCardRepository->getByUser($this->userId);
 
-        foreach($creditCards as $creditCard) {
+        foreach ($creditCards as $creditCard) {
             $creditCardId = $creditCard->getId();
 
             $creditCardHydrated['id'] = $creditCardId;
@@ -79,7 +82,7 @@ final class CreditCardPage extends AbstractController
 
     #[LiveAction]
     public function toggleCreditCardForm(): void
-    {   
+    {
         $this->resetForm();
         $this->showCreditCardForm = !$this->showCreditCardForm;
     }
@@ -94,7 +97,7 @@ final class CreditCardPage extends AbstractController
         $dateTime = null;
 
         try {
-           $dateTime = new \DateTime($this->expirationDate);
+            $dateTime = new \DateTime($this->expirationDate);
         } catch (\Exception) {
             $dateTime = new \DateTime();
         }

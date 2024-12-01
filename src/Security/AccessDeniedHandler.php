@@ -10,7 +10,9 @@ use App\Service\RedirectService;
 
 class AccessDeniedHandler implements AccessDeniedHandlerInterface
 {
-    public function __construct(private RedirectService $redirectService) {}
+    public function __construct(private RedirectService $redirectService)
+    {
+    }
 
     public function handle(Request $request, AccessDeniedException $accessDeniedException): Response
     {
@@ -25,10 +27,10 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface
             $message = 'access_denied.login';
             $fallbackRoute = 'app_home';
         }
-        
+
         if (str_starts_with($route, '/admin')) {
-            $type = 'information';
-            $message = 'access_denied.login';
+            $type = 'error';
+            $message = 'access_denied.admin';
             $fallbackRoute = 'app_home';
         }
 

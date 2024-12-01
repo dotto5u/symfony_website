@@ -25,7 +25,8 @@ use App\Enum\ProductStatus;
 #[AsLiveComponent]
 final class Cart
 {
-    use DefaultActionTrait, ComponentToolsTrait;
+    use DefaultActionTrait;
+    use ComponentToolsTrait;
 
     #[LiveProp]
     public array $cart;
@@ -35,7 +36,7 @@ final class Cart
 
     public int $maxCartQuantity;
 
-    public function __construct(private RequestStack $requestStack, private ParameterBagInterface $params, private ProductRepository $productRepository) 
+    public function __construct(private RequestStack $requestStack, private ParameterBagInterface $params, private ProductRepository $productRepository)
     {
         $this->maxCartQuantity = $this->params->get('app.max_cart_quantity');
     }
@@ -97,8 +98,7 @@ final class Cart
             if ($quantity === 0) {
                 unset($cart[$id]);
                 unset($this->cart[$id]);
-            }
-            else {
+            } else {
                 $cart[$id] = $quantity;
                 $this->cart[$id]['quantity'] = $quantity;
             }
@@ -112,9 +112,9 @@ final class Cart
 
     #[LiveAction]
     public function payCart(Request $request, EntityManagerInterface $em, TokenInterface $token, RedirectService $redirectService): Response
-    {   
+    {
         $user = $token->getUser();
-        
+
         if (!$user) {
             return $redirectService->redirectWithFlash($request, 'error', 'flash.cart.payment_user_required', 'app_login');
         }

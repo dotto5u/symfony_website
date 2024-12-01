@@ -11,7 +11,9 @@ use App\Repository\CreditCardRepository;
 
 class CreditCardsController extends AbstractController
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     #[Route('/credit-cards', name: 'app_credit_cards')]
     public function index(TokenInterface $token, CreditCardRepository $creditCardRepository): Response
@@ -27,7 +29,7 @@ class CreditCardsController extends AbstractController
         $creditCards = $creditCardRepository->getByUser($userId);
         $creditCardsHydrated = [];
 
-        foreach($creditCards as $creditCard) {
+        foreach ($creditCards as $creditCard) {
             $creditCardId = $creditCard->getId();
 
             $item['id'] = $creditCardId;

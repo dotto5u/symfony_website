@@ -12,9 +12,11 @@ use Symfony\Component\HttpFoundation\Session\FlashBagAwareSessionInterface;
 
 class RedirectService
 {
-    public function __construct(private UrlGeneratorInterface $urlGenerator) {}
+    public function __construct(private UrlGeneratorInterface $urlGenerator)
+    {
+    }
 
-    public function redirectWithFlash(Request $request, string $type, string $message, string $fallbackRoute): RedirectResponse 
+    public function redirectWithFlash(Request $request, string $type, string $message, string $fallbackRoute): RedirectResponse
     {
         $session = $this->getSession($request);
 
@@ -40,8 +42,7 @@ class RedirectService
 
     private function getFlashBag(SessionInterface $session): FlashBagInterface
     {
-        if (!$session instanceof FlashBagAwareSessionInterface) 
-        {
+        if (!$session instanceof FlashBagAwareSessionInterface) {
             throw new \LogicException(sprintf('You cannot use flash messages because session "%s" does not implement "%s".', get_debug_type($session), FlashBagAwareSessionInterface::class));
         }
 

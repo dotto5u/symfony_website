@@ -6,7 +6,7 @@ access_denied:
 
 # flash
 flash:
-    products:
+    product:
         not_found: Produit introuvable
         cannot_be_deleted: Le produit ne peut pas être supprimé
         cannot_be_deleted_due_to_order: Le produit ne peut pas être supprimé car il fait partie d'une commande

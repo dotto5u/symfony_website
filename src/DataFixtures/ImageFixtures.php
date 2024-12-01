@@ -43,7 +43,7 @@ class ImageFixtures extends Fixture
             [
                 'url' => 'soft_&_wet.jpg'
             ],
-        ];        
+        ];
 
         foreach ($imagesData as $key => $imageData) {
             $image = $this->createImage($imageData);

@@ -16,7 +16,9 @@ final class Navbar
     #[LiveProp(writable: true)]
     public int $cartCount = 0;
 
-    public function __construct(private RequestStack $requestStack) {}
+    public function __construct(private RequestStack $requestStack)
+    {
+    }
 
     public function mount(): void
     {

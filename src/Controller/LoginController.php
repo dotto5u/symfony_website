@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class LoginController extends AbstractController
-{   
-    public function __construct(private RequestStack $requestStack) {}
+{
+    public function __construct(private RequestStack $requestStack)
+    {
+    }
 
     #[Route('/login', name: 'app_login')]
     public function index(AuthenticationUtils $authenticationUtils): Response
@@ -30,7 +32,8 @@ class LoginController extends AbstractController
     }
 
     #[Route('/logout', name: 'app_logout')]
-    public function logout(): void {
+    public function logout(): void
+    {
         // logout géré par le security.yaml
     }
 }

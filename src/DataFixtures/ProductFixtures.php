@@ -106,7 +106,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
                 'categories_ref' => ['category_5'],
                 'image_ref' => 'image_10'
             ],
-        ];        
+        ];
 
         foreach ($productsData as $key => $productData) {
             $product = $this->createProduct($productData);

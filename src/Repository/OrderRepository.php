@@ -65,20 +65,18 @@ class OrderRepository extends ServiceEntityRepository
         $interval = new \DateInterval('P1M');
         $period = new \DatePeriod($startDate, $interval, $endDate);
 
-        $monthlySales = array_reduce($result, function($sales, $sale) 
-        {
+        $monthlySales = array_reduce($result, function ($sales, $sale) {
             $key = $sale['year'].'-'.$sale['month'];
             $sales[$key] = $sale['total'];
             return $sales;
         }, []);
 
-        foreach ($period as $date) 
-        {
+        foreach ($period as $date) {
             $year = $date->format('Y');
             $month = $date->format('m');
             $key = $year.'-'.$month;
-    
-            $sales[] = 
+
+            $sales[] =
             [
                 'year' => $year,
                 'month' => $month,

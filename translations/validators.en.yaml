@@ -13,6 +13,7 @@ error:
             not_null: The price must not be blank
             numeric: The price must be a number
             positive: The price must be greater than 0
+            less_than_or_equal: The price must be less than or equal to {{ compared_value }}
         description:
             not_blank: The description must not be blank
             length: The description must not exceed {{ limit }} characters
@@ -20,6 +21,7 @@ error:
             not_null: The stock must not be blank
             numeric: The stock must be a number
             greater_than_or_equal: The stock must be greater than or equal to {{ compared_value }}
+            less_than_or_equal: The stock must be less than or equal to {{ compared_value }}
         status:
             available: The status cannot be "Available" when the stock is 0
             sold_out: The status cannot be "Sold out" when the stock is greater than 0

@@ -28,6 +28,7 @@ class Product
     #[Assert\NotNull(message: 'error.product.price.not_null')]
     #[Assert\Type(type: 'numeric', message: 'error.product.price.numeric')]
     #[Assert\Positive(message: 'error.product.price.positive')]
+    #[Assert\LessThanOrEqual(value: 100000, message: 'error.product.price.less_than_or_equal')]
     private ?string $price = null;
 
     #[ORM\Column(length: 255)]
@@ -39,6 +40,7 @@ class Product
     #[Assert\NotNull(message: 'error.product.stock.not_null')]
     #[Assert\Type(type: 'numeric', message: 'error.product.stock.numeric')]
     #[Assert\GreaterThanOrEqual(value: 0, message: 'error.product.stock.greater_than_or_equal')]
+    #[Assert\LessThanOrEqual(value: 100, message: 'error.product.stock.less_than_or_equal')]
     private ?int $stock = null;
 
     #[ORM\Column(enumType: ProductStatus::class)]

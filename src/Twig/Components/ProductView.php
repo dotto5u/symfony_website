@@ -15,7 +15,8 @@ use App\Enum\ProductStatus;
 #[AsLiveComponent]
 final class ProductView
 {
-    use DefaultActionTrait, ComponentToolsTrait;
+    use DefaultActionTrait;
+    use ComponentToolsTrait;
 
     #[LiveProp]
     public Product $product;
@@ -25,7 +26,7 @@ final class ProductView
 
     private int $maxCartQuantity;
 
-    public function __construct(private RequestStack $requestStack, private ParameterBagInterface $params) 
+    public function __construct(private RequestStack $requestStack, private ParameterBagInterface $params)
     {
         $this->maxCartQuantity = $this->params->get('app.max_cart_quantity');
     }
@@ -49,10 +50,10 @@ final class ProductView
     }
 
     public function isAddToCardAvailable(): bool
-    {   
+    {
         $session = $this->requestStack->getSession();
         $cart = $session->get('cart', []);
-        
+
         $productId = $this->product->getId();
         $productStatus = $this->product->getStatus();
         $productStock = $this->product->getStock();

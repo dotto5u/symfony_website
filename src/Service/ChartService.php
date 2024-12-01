@@ -7,12 +7,14 @@ use Symfony\UX\Chartjs\Model\Chart;
 
 class ChartService
 {
-    public function __construct(private ChartBuilderInterface $chartBuilder) {}
+    public function __construct(private ChartBuilderInterface $chartBuilder)
+    {
+    }
 
     public function createPieChart(array $labels, array $data, array $backgroundColor): Chart
     {
         $chart = $this->chartBuilder->createChart(Chart::TYPE_PIE);
-        
+
         $chart->setData([
             'labels' => $labels,
             'datasets' => [

@@ -12,10 +12,10 @@ class UserFixtures extends Fixture
     private const USER_REF_PREFIX = 'user_';
     private $userPasswordHasherInterface;
 
-    public function __construct(UserPasswordHasherInterface $userPasswordHasherInterface) 
+    public function __construct(UserPasswordHasherInterface $userPasswordHasherInterface)
     {
         $this->userPasswordHasherInterface = $userPasswordHasherInterface;
-    }                                                                                
+    }
 
     public function load(ObjectManager $manager): void
     {

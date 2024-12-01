@@ -13,6 +13,7 @@ error:
             not_null: Le prix ne doit pas être vide
             numeric: Le prix doit être un nombre
             positive: Le prix doit être supérieur à 0
+            less_than_or_equal: Le prix doit être inférieur ou égal à {{ compared_value }}
         description:
             not_blank: La description ne doit pas être vide
             length: La description ne doit pas dépasser {{ limit }} caractères
@@ -20,6 +21,7 @@ error:
             not_null: Le stock ne doit pas être vide
             numeric: Le stock doit être un nombre
             greater_than_or_equal: Le stock doit être supérieur ou égal à {{ compared_value }}
+            less_than_or_equal: Le stock doit être inférieur ou égal à {{ compared_value }}
         status:
             available: Le statut ne peut pas être « Disponible » lorsque le stock est de 0
             sold_out: Le statut ne peut pas être « En rupture » lorsque le stock est supérieur à 0
