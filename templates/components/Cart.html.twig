@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="mt-7 flex justify-center">
-                    <span><a href="{{ path('app_home') }}" class="px-7 bg-slate-600 hover:bg-slate-700 fcp-button">{{ 'label.cart.credit_cards' | trans }}</a></span>
+                    <span><a href="{{ path('app_credit_cards') }}" class="px-7 bg-slate-600 hover:bg-slate-700 fcp-button">{{ 'label.cart.credit_cards' | trans }}</a></span>
                 </div>
             </div>
         </div>
@@ -90,6 +90,10 @@
         <div class="flex flex-col items-center mt-10 gap-y-5 text-fcp-white">
             <p class="text-xl">{{ 'label.cart.empty' | trans }}</p>
             <a href="{{ path('app_products_list') }}" class="text-lg font-semibold underline">{{ 'label.cart.shopping' | trans }}</a>
+            
+            <div class="mt-7 flex justify-center">
+                <span><a href="{{ path('app_credit_cards') }}" class="px-7 bg-slate-600 hover:bg-slate-700 fcp-button">{{ 'label.cart.credit_cards' | trans }}</a></span>
+            </div>
         </div>
     {% endif %}
 </div>

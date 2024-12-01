@@ -46,6 +46,8 @@ title:
     cart:
         main: My cart
         summary: Summary
+    credit_card:
+        main: My credit cards
     user:
         admin: List of users
     order:

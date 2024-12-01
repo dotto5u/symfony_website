@@ -46,6 +46,8 @@ title:
     cart:
         main: Mon panier
         summary: Récapitulatif
+    credit_card:
+        main: Mes cartes bancaires
     user:
         admin: Liste des utilisateurs
     order:

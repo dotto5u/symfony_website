@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {{ component('Navbar') }}
+{% endblock %}
+
+{% block main %}
+    <main class="flex flex-col gap-y-10 mx-6 my-12 sm:mx-36 sm:my-20">
+        <h1 class="text-fcp-white text-3xl">{{ 'title.credit_card.main' | trans }}</h1>
+        
+        {{ component('CreditCardPage') }}
+    </main>
+{% endblock %}
